@@ -22,8 +22,9 @@
 | Task | 1st | 2nd | 3rd |
 |------|-----|-----|-----|
 | T1 블로그 | playwright | aside | aside-solo |
-| T2 홈택스 | aside | aside-solo | playwright |
-| T3 용인 점심 | aside-solo | playwright | aside |
+| T3 용인 점심 | playwright | aside | aside-solo |
+
+암 순서는 T3부터 `playwright → aside → aside-solo`로 고정한다(회전 없음).
 
 ## 실행 규칙
 

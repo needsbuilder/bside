@@ -1,0 +1,32 @@
+{
+  "task": "A1",
+  "arm": "aside",
+  "started_at": "2026-08-30T07:09:48Z",
+  "wall_seconds": 390,
+  "outcome": "success",
+  "rubric": {
+    "R1_검색도달": true,
+    "R2_필터링정확": true,
+    "R3_추출정확": true,
+    "R4_장바구니": true
+  },
+  "tokens": {
+    "input_fresh": 154,
+    "cache_read": 4040928,
+    "cache_creation": 191130,
+    "output": 47487,
+    "total": 4279699
+  },
+  "tool_calls": 36,
+  "interventions": [],
+  "block_mode": null,
+  "misreads": [],
+  "retried_infra": false,
+  "recording": {
+    "seconds": 392,
+    "valid": true
+  },
+  "video": null,
+  "notes": "390s 완전 성공. 차단·CAPTCHA 0회. 낮은가격순 정렬 + listSize=72로 1~3페이지 217개 DOM 추출 후 조건 충족 39개 중 최저가 확정(가격 오름차순이라 최저가 논증 완결). 리뷰 분포 역산으로 표시 평점 4.5의 반올림 여부까지 자체 검증. 상품 8136970822 / 9,700원 / 4.5 / 리뷰 1,101.",
+  "session_file": "17dd8a2b-3873-416b-bd05-ef819f97a734.jsonl"
+}

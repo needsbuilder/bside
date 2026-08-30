@@ -3,10 +3,22 @@
   "arm": "aside-solo",
   "started_at": "2026-08-30T16:52:30Z",
   "wall_seconds": 734,
-  "outcome": null,
-  "rubric": {},
-  "tokens": null,
-  "tool_calls": null,
+  "outcome": "success",
+  "rubric": {
+    "R1_후보발굴": true,
+    "R2_비교표품질": true,
+    "R3_추천근거": true,
+    "R4_예약또는영업확인": true
+  },
+  "tokens": {
+    "input": 132,
+    "output": 26530,
+    "cache_read": 4486360,
+    "cache_write": 121227,
+    "reasoning": 12206,
+    "total": 4634249
+  },
+  "tool_calls": 66,
   "interventions": [],
   "block_mode": null,
   "misreads": [],
@@ -14,8 +26,15 @@
   "driver": "UI (사람이 쓰듯 Aside 에이전트 입력창에 프롬프트 투입, 컴퓨터유즈로 타이핑)",
   "recording": {
     "seconds": 445,
-    "valid": false
+    "valid": false,
+    "absent_reason": "실행 중 화면 절전으로 녹화가 445s에서 중단(전체 734s의 61%). 원인은 UI 실행 스크립트의 절전 방지(caffeinate)가 부모 PID에 묶여 스크립트 종료와 함께 죽은 것 — 이후 수정함. 결과 증거는 세션 트랜스크립트와 에이전트가 저장한 스크린샷(도보 경로·플레이스 페이지)."
   },
   "video": null,
-  "notes": ""
+  "notes": "734s 완전 성공 — playwright(760s)와 거의 동률. 1순위 샐러리아 동백역점으로 playwright와 동일한 결론에 독립 도달(도보 1분, 거리 산출은 27m로 더 정밀). 후보 비교·제외 사유(오카벤 기름진 메뉴, 국수나무 분식) 제시, 네이버 예약 미지원 확인 후 영업시간 대체 확인, 도보 경로·플레이스 페이지 스크린샷을 증거로 첨부. T3 aside CLI 암은 같은 과제에서 899s 타임아웃(1/4) — T1에 이어 단독 모드가 CLI 모드를 다시 앞섬.",
+  "cost_usd": 3.664758749999999,
+  "tools_used": {
+    "get_time": 1,
+    "repl": 65
+  },
+  "session_file": "aside-session.jsonl"
 }

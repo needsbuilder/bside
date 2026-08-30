@@ -27,6 +27,6 @@
     "valid": true
   },
   "video": null,
-  "notes": "900s 타임아웃. 스마트에디터 진입까지는 성공했으나 사진 첨부 단계에서 macOS 네이티브 파일 선택창을 띄워 자동화가 정지(frame-75에 그 장면이 그대로 녹화됨). 파일 선택창은 CDP로 제어 불가라 스스로 빠져나오지 못했고, 사람이 닫아주면 개입이 되므로 그대로 타임아웃 처리. 대비: playwright 암은 같은 관문에서 DOM.setFileInputFiles 차단을 만나 드래그앤드롭으로 우회해 발행 성공. 콜드 스타트(메모리 초기화 후) 실행.",
+  "notes": "900s 타임아웃. 타임라인: ~213s 에디터 진입(본문 비어있음, frame-25) → 이 구간에 제목·본문 작성 → 사진 첨부 버튼 클릭으로 macOS 네이티브 파일 선택창 발생(~330-420s, frame-50에서 확인) → 이후 690s까지 attachActiveBrowserTab·bringToFront 반복하며 복구 시도했으나 진전 없음. 원인: 파일 선택창은 OS 소유 모달이라 CDP 키 입력이 닿지 않음. 에이전트가 prepareForPotentialFileChooser·waitForEvent(filechooser) API를 찾아냈으나 이는 창이 뜨기 전에 걸어야 하는 것이라 사후 대응 불가. 대비: playwright 암은 DOM.setFileInputFiles 차단을 만나자 버튼을 누르지 않고 드래그앤드롭으로 우회해 발행 성공 — 즉 파일 첨부는 양쪽 다 막히며 차이는 우회로 탐색 여부. 콜드 스타트 실행. 사람 개입 0회(다이얼로그 방치).",
   "session_file": "transcript.jsonl"
 }

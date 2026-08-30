@@ -1,0 +1,6 @@
+*.mov
+*.mp4
+runs/**/raw/
+*.pdf
+.DS_Store
+.env.local

@@ -3,15 +3,17 @@
 > **Independent project. Not affiliated with, endorsed, or sponsored by Aside / at inc.**
 
 Does the [Aside](https://aside.com) browser actually outperform existing
-browser-automation setups on the real web? We run the same tasks — on sites
-notorious for breaking automation (Coupang, Naver, gov.kr, Instagram) — through
-three setups, all driven by Claude Code with the same model (Opus 5):
+browser-automation setups on the real web? We run the same three tasks — on
+sites notorious for breaking automation (Naver SmartEditor, gov.kr, Naver Map)
+— through four setups. Three are controlled (Claude Code + Opus 5, only the
+browser backend changes); one is Aside's own agent as a reference:
 
-| Arm | Interface |
-|-----|-----------|
-| Aside | `aside` CLI |
-| Playwright | `@playwright/cli` |
-| Claude in Chrome | built-in `--chrome` |
+| Arm | Interface | Role |
+|-----|-----------|------|
+| Aside | `aside` CLI | controlled |
+| Playwright | `@playwright/cli` | controlled |
+| Claude in Chrome | built-in `--chrome` | controlled |
+| Aside solo | `aside exec` (own agent loop) | reference |
 
 **Results: TBD after runs** <!-- 결과 요약표 + 영상 링크로 교체 -->
 

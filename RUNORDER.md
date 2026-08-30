@@ -1,25 +1,26 @@
 # Run order
 
-암 순서는 과제마다 회전시킨다. 같은 암이 항상 먼저/나중에 들어가서 생기는
-편향(사이트가 첫 방문자를 다르게 대하는 경우, 계정 상태 변화 등)을 상쇄하기
-위한 것이며, **실행 전에 고정**한다.
+## 구조 (2026-08-30 확정)
 
-| Task | 1st | 2nd | 3rd |
-|------|-----|-----|-----|
-| A1 쿠팡 | aside | playwright | chrome |
-| A2 네이버 블로그 | playwright | chrome | aside |
-| A3 네이버 지도 | chrome | aside | playwright |
-| A4 인스타그램 | aside | chrome | playwright |
-| A5 정부24 | playwright | aside | chrome |
-| C1 업비트 | chrome | playwright | aside |
-| C2 Threads | aside | playwright | chrome |
-| C3 올리브영 | playwright | chrome | aside |
-| D1 (선정 예정) | chrome | aside | playwright |
-| D2 (선정 예정) | playwright | aside | chrome |
+- **과제 3개**: T1 네이버 블로그 발행 / T2 정부24 등본 / T3 용인 점심 예약(실사용 일정)
+- **통제군 3암**: Claude Code + Opus 5 고정, 브라우저 백엔드만 교체
+  - `aside` (aside CLI) · `playwright` (@playwright/cli) · `chrome` (Claude in Chrome)
+- **참조군 1암**: `aside-solo` — Aside 자체 에이전트(`aside exec`), 모델 동일(Opus 5).
+  하네스가 다르므로 통제 비교가 아니라 "제품이 의도한 형태의 상한"으로 해석.
+  토큰·툴콜은 Claude Code 트랜스크립트 밖이라 측정 불가(null)로 표기.
+
+## 순서 (과제마다 회전, 실행 전 고정)
+
+| Task | 1st | 2nd | 3rd | 4th |
+|------|-----|-----|-----|-----|
+| T1 블로그 | playwright | chrome | aside | aside-solo |
+| T2 정부24 | aside | aside-solo | playwright | chrome |
+| T3 용인 점심 | chrome | playwright | aside-solo | aside |
 
 ## 실행 규칙
 
-- 과제당 각 암 1회. 인프라 실패(도구 크래시·네트워크)만 1회 재시도하고 기록한다.
-- 녹화가 무효(실행 시간의 90% 미만)면 그 실행은 폐기하고 다시 돌린다.
-- 타임아웃 900초. 초과 시 실패로 기록하고 도달 지점을 남긴다.
-- C3(올리브영)는 비회원 장바구니가 불가하므로 로그인 확인 후 실행한다.
+- 과제당 각 암 1회. 인프라 실패(도구 크래시·네트워크·녹화 무효)만 1회 재시도하고 기록.
+- 녹화는 길이(실행의 90%↑)와 **내용**(25/50/75% 샘플 프레임에 작업 화면이 담겼는지)
+  둘 다 확인해야 유효. 작업 탭은 항상 화면 앞에 둔다.
+- 타임아웃 900초. 사람 개입은 간편인증·CAPTCHA만 허용(횟수 기록).
+- 과제 산출물(PDF 등)은 실행 직후 비공개 경로로 이동해 다음 암이 못 보게 한다.

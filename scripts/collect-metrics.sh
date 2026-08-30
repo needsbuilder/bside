@@ -12,6 +12,12 @@ if [ "$(jq -r '.recording.valid' "$OUT/metrics.json")" != "true" ]; then
   echo "경고: 이 실행은 녹화가 무효입니다. 기록하지 말고 재실행하세요."; exit 1
 fi
 
+if [ "$ARM" = "aside-solo" ]; then
+  jq '.tokens = null | .tool_calls = null | .session_file = null' "$OUT/metrics.json" > "$OUT/metrics.json.tmp" \
+    && mv "$OUT/metrics.json.tmp" "$OUT/metrics.json"
+  echo "aside-solo: Claude Code 하네스 밖 실행이라 토큰·툴콜은 측정 불가(null)"; 
+  jq '{task, arm, wall_seconds, recording}' "$OUT/metrics.json"; exit 0
+fi
 SESSION_FILE="$OUT/raw/transcript.jsonl"
 [ -f "$SESSION_FILE" ] || { echo "트랜스크립트 없음: $SESSION_FILE — 이 실행은 지표 집계 불가"; exit 1; }
 

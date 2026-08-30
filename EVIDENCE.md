@@ -22,11 +22,10 @@ Two commenters explicitly asked for this exact artifact:
 
 | # | Claim | Source | Tested by |
 |---|-------|--------|-----------|
-| 1 | Aside uses fewer tokens than alternatives | rumor in joshproductletter replies (hearsay, two commenters) | token metric, all tasks |
+| 1 | Aside uses fewer tokens than alternatives | rumor in joshproductletter replies (hearsay, two commenters) | token metric (CLI arms) |
 | 2 | Aside feels faster | joshproductletter replies (subjective) | wall-clock metric, all tasks |
-| 3 | Snapshot-based tools misread dynamic DOM; Aside doesn't | lilmgenius post | C1–C3 |
-| 4 | "Works where Playwright / extensions fail" (anti-bot, hard sites) | lilmgenius ("안티봇 패턴을 뚫어주는 문제해결 능력이 해자"), multiple replies | A1–A5 |
-| 5 | Repetition/memory makes later runs better | Aside's memory pitch; jaeminyx_dev's request | D1–D2 |
+| 3 | "Works where Playwright / extensions fail" (hard sites) | lilmgenius ("안티봇 패턴을 뚫어주는 문제해결 능력이 해자"), multiple replies | T1–T3 |
+| 4 | Aside standalone is worth installing at all | chris.jp.kim thread's core question | `aside-solo` reference arm |
 
 ## Site selection evidence
 
@@ -35,16 +34,20 @@ breaking conventional automation:
 
 | Task | Site | Public failure evidence |
 |------|------|------------------------|
-| A1 | Coupang | Akamai Bot Manager deployment; Selenium/Playwright/Puppeteer near-fully blocked since 2024 ([hashscraper](https://blog.hashscraper.com/posts/coupang-crawling-2026-complete-guide-everything-about-akamai-bypass?locale=en)); vendor notice of 403 bot-detection errors ([Sello](https://www.sello.co.kr/Support/notice/Read/38564?page=1)) |
-| A2 | Naver Blog (SmartEditor) | Editor built on Naver's deprecated Jindo JS framework ([namu.wiki](https://namu.wiki/w/%EC%8A%A4%EB%A7%88%ED%8A%B8%EC%97%90%EB%94%94%ED%84%B0)); iframe handling issues ([naver/smarteditor2#226](https://github.com/naver/smarteditor2/issues/226)) |
-| A3 | Naver Map/Place | Dual-iframe structure (searchIframe/entryIframe) trips Selenium ([Inflearn Q&A](https://www.inflearn.com/community/questions/665581)); Naver runs an in-house bot-blocking system with irregular enforcement ([hashscraper](https://blog.hashscraper.com/posts/reasons-why-naver-crawling-is-blocked-and-solutions?locale=ko)) |
-| A4 | Instagram | Rate-limit driven crawl stops and account/IP blocks on follower-list scrolling ([velog](https://velog.io/@kimjihong/selenium-instagram-follow-crawling), [dotnetdev forum](https://forum.dotnetdev.kr/t/topic/8275)) |
-| A5 | gov.kr (정부24) | Mandatory security programs (AnySign4PC, TouchEn nxKey, ezCert) ([official](https://plus.gov.kr/portal/scrtycntr/scrtyprgrm/)); official notice restricting macro/automation users ([gov.kr notice](https://www.gov.kr/portal/ntcItm/108068?Mcode=1118)) |
+| T1 | Naver Blog (SmartEditor) | Editor built on Naver's deprecated Jindo JS framework ([namu.wiki](https://namu.wiki/w/%EC%8A%A4%EB%A7%88%ED%8A%B8%EC%97%90%EB%94%94%ED%84%B0)); iframe handling issues ([naver/smarteditor2#226](https://github.com/naver/smarteditor2/issues/226)) |
+| T2 | gov.kr (정부24) | Mandatory security programs (AnySign4PC, TouchEn nxKey, ezCert) ([official](https://plus.gov.kr/portal/scrtycntr/scrtyprgrm/)); official notice restricting macro/automation users ([gov.kr notice](https://www.gov.kr/portal/ntcItm/108068?Mcode=1118)) |
+| T3 | Naver Map/Place | Dual-iframe structure (searchIframe/entryIframe) trips Selenium ([Inflearn Q&A](https://www.inflearn.com/community/questions/665581)); Naver runs an in-house bot-blocking system with irregular enforcement ([hashscraper](https://blog.hashscraper.com/posts/reasons-why-naver-crawling-is-blocked-and-solutions?locale=ko)) |
+
+T3 is a real errand: the author actually travels to this meeting the next day,
+and the lunch recommendation is used as-is.
 
 ## Method
 
-- All three arms run under Claude Code with the same model (Opus 5) and the
-  identical prompt block from `tasks/`. Only the browser backend differs.
+- The three controlled arms run under Claude Code with the same model (Opus 5)
+  and the identical prompt block from `tasks/`. Only the browser backend
+  differs. A fourth **reference arm** (`aside-solo`) runs Aside's own agent
+  loop on the same model and prompt — not a controlled comparison, but the
+  product's intended form; its token use is not measurable from outside.
 - Each arm is confined to its own tool: the other arms' CLIs are denied at the
   harness level, so a run cannot silently escape into another arm's tooling.
 - Every run is screen-recorded. Before the run, recording permission is

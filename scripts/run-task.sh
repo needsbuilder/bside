@@ -23,6 +23,7 @@ mkdir -p "$OUT/raw"
 
 case $ARM in
   aside)      WATCH="Aside 브라우저 창";;
+  aside-solo) WATCH="Aside 브라우저 창 (자체 에이전트)";;
   playwright) WATCH="Chrome 창 (Playwright 확장이 조작)";;
   chrome)     WATCH="Chrome 창 (Claude in Chrome 탭 그룹)";;
   *) echo "unknown arm: $ARM"; exit 1;;
@@ -61,6 +62,9 @@ cd "$WORK"
 # 암별 도구 격리: 지정 도구만 허용하고 나머지 브라우저 자동화 경로는 차단한다.
 DENY_COMMON=("Bash(playwriter:*)" "Bash(npx playwriter:*)" "Bash(bunx playwriter:*)")
 case $ARM in
+  aside-solo)
+    # 참조군: Aside 자체 에이전트 루프 (하네스는 Claude Code가 아님 — 토큰 측정 불가)
+    timeout $TIMEOUT_SECS aside exec "$PROMPT" 2>&1 | tee "$REPO/$OUT/raw/output.txt";;
   aside)
     timeout $TIMEOUT_SECS claude -p "$PROMPT" --model $MODEL \
       --allowedTools "Bash(aside:*)" \

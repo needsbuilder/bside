@@ -1,0 +1,32 @@
+{
+  "task": "T2",
+  "arm": "aside",
+  "started_at": "2026-08-30T14:27:52Z",
+  "wall_seconds": 900,
+  "outcome": "partial",
+  "rubric": {
+    "R1_메뉴도달": true,
+    "R2_발급완료": true,
+    "R3_PDF저장": false,
+    "R4_문서확인": false
+  },
+  "tokens": {
+    "input_fresh": 338,
+    "cache_read": 14180724,
+    "cache_creation": 399747,
+    "output": 136967,
+    "total": 14717776
+  },
+  "tool_calls": 76,
+  "interventions": [],
+  "block_mode": null,
+  "misreads": [],
+  "retried_infra": false,
+  "recording": {
+    "seconds": 902,
+    "valid": true
+  },
+  "video": null,
+  "notes": "900s 타임아웃. 홈택스 사업자등록증명 발급 신청은 완료(접수일시 2026-08-30 23:37:16, 민원처리결과 조회에서 확인) — 레거시 UI·팝업 관문은 통과했다. 이후 발급 문서 PDF 저장 단계에서 문서 창을 찾느라 탭 폴링을 반복하다 시간 소진. 정부24 사례와 동일 패턴(발급은 되나 뷰어에서 파일로 저장하는 마지막 단계가 병목). 콜드 스타트 실행, 사람 개입 0회.",
+  "session_file": "transcript.jsonl"
+}

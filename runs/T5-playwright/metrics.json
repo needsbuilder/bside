@@ -1,0 +1,32 @@
+{
+  "task": "T5",
+  "arm": "playwright",
+  "started_at": "2026-08-30T18:45:09Z",
+  "wall_seconds": 904,
+  "outcome": "timeout",
+  "rubric": {
+    "R1_양사이트탐색": true,
+    "R2_조건충족5건": false,
+    "R3_표항목완성": false,
+    "R4_중복확인추천": false
+  },
+  "tokens": {
+    "input_fresh": 262,
+    "cache_read": 9695499,
+    "cache_creation": 299254,
+    "output": 85964,
+    "total": 10080979
+  },
+  "tool_calls": 68,
+  "interventions": [],
+  "block_mode": null,
+  "misreads": [],
+  "retried_infra": false,
+  "recording": {
+    "seconds": 905,
+    "valid": true
+  },
+  "video": null,
+  "notes": "904s 타임아웃. 두 사이트 모두 도달(land.naver 52·zigbang 36회) 했으나 최종 표 미완성. 좌초 지점: 직방 단기임대(stay) 섹션이 주 단위 요금 체계라 과제의 보증금/월세 조건과 직접 대응하지 않는 구조 차이를 파악하던 중 종료. 네이버 부동산(지도 iframe+매물 iframe)과 직방(SPA)의 이질적 구조를 오가는 부담이 그대로 드러남 — T4에 이어 playwright 암의 두 번째 연속 타임아웃.",
+  "session_file": "transcript.jsonl"
+}

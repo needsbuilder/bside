@@ -1,0 +1,32 @@
+{
+  "task": "T4",
+  "arm": "aside",
+  "started_at": "2026-08-30T18:20:59Z",
+  "wall_seconds": 903,
+  "outcome": "timeout",
+  "rubric": {
+    "R1_양사이트탐색": true,
+    "R2_마감전공고": null,
+    "R3_표항목완성": false,
+    "R4_적합판단추천": false
+  },
+  "tokens": {
+    "input_fresh": 170,
+    "cache_read": 5681430,
+    "cache_creation": 332847,
+    "output": 70293,
+    "total": 6084740
+  },
+  "tool_calls": 43,
+  "interventions": [],
+  "block_mode": null,
+  "misreads": [],
+  "retried_infra": false,
+  "recording": {
+    "seconds": 902,
+    "valid": true
+  },
+  "video": null,
+  "notes": "903s 타임아웃. playwright와 동일한 실패 지점: 두 사이트(bizinfo 44·k-startup 37회) 탐색과 후보 5개 선별까지 성공했으나 지원금 규모를 공고 원문에서 확인하는 단계에서 시간 소진. 특이사항: 마지막에 aside exec로 자체 에이전트에 위임을 시도(--effort medium) — 이 경우 위임된 작업의 토큰은 Claude Code 트랜스크립트에 잡히지 않아 토큰 수치가 과소 계상될 수 있음(리포트에 명시 필요). 콜드 스타트, 개입 0회.",
+  "session_file": "transcript.jsonl"
+}

@@ -1,0 +1,32 @@
+{
+  "task": "A2",
+  "arm": "chrome",
+  "started_at": "2026-08-30T08:03:28Z",
+  "wall_seconds": 142,
+  "outcome": "blocked",
+  "block_mode": "extension-policy-domain-blocklist",
+  "rubric": {
+    "R1_에디터생존": false,
+    "R2_교차배치": false,
+    "R3_조건준수": false,
+    "R4_발행완료": false
+  },
+  "tokens": {
+    "input_fresh": 42,
+    "cache_read": 778749,
+    "cache_creation": 163599,
+    "output": 19188,
+    "total": 961578
+  },
+  "tool_calls": 10,
+  "interventions": [],
+  "misreads": [],
+  "retried_infra": false,
+  "recording": {
+    "seconds": 0,
+    "valid": false,
+    "absent_reason": "확장이 naver.com 이동을 거부해 페이지가 한 번도 로드되지 않았고, 실행 후 정리 과정에서 녹화 파일이 삭제됨. 화면에 담길 내용이 없었던 실행이라 재실행하지 않고 트랜스크립트를 증거로 채택."
+  },
+  "video": null,
+  "notes": "142s. blog.naver.com·naver.com 이동을 확장이 거부(This site is not allowed due to safety restrictions). A1-chrome과 동일한 도메인 차단. 에이전트는 발행 불가를 확인한 뒤 원고·구성·태그를 로컬로 준비했으나 채점 대상 아님."
+}

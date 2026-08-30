@@ -50,7 +50,10 @@ breaking conventional automation:
 - Every run is screen-recorded. Before the run, recording permission is
   verified with a probe capture; after the run, the recording's duration is
   checked against the wall clock. **A run without a valid recording does not
-  count and is re-run.**
+  count and is re-run** — except when the arm is blocked before any page loads,
+  in which case nothing appears on screen and the session transcript stands as
+  the evidence. Such runs are marked in `runs/**/metrics.json` with
+  `recording.valid: false` and the reason.
 - One run per arm per task. Only infrastructure failures (tool crash, network)
   may be retried, and retries are recorded.
 

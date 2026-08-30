@@ -13,6 +13,7 @@ REC=$(cat "$OUT/raw/rec.pid" 2>/dev/null)
 [ -n "$REC" ] && kill -INT "$REC" 2>/dev/null
 for _ in $(seq 1 60); do kill -0 "$REC" 2>/dev/null || break; sleep 1; done
 kill -TERM "$REC" 2>/dev/null; sleep 1
+CAF=$(cat "$OUT/raw/caffeinate.pid" 2>/dev/null); [ -n "$CAF" ] && kill "$CAF" 2>/dev/null
 
 # 이번 실행에서 새로 생긴 Aside 세션 찾기
 NEW=$(comm -13 <(sort "$OUT/raw/sessions-before.txt") <(ls ~/.aside/u/0/sessions | sort) | tail -1)

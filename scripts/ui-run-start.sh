@@ -20,9 +20,12 @@ rm -rf "$HOME/.aside/u/0/memory" && mkdir -p "$HOME/.aside/u/0/memory"
 # 기존 세션 목록 스냅샷 (실행 후 새로 생긴 세션을 식별하기 위해)
 ls ~/.aside/u/0/sessions > "$OUT/raw/sessions-before.txt" 2>/dev/null
 
-caffeinate -dimsu -w $$ &
-screencapture -v -D $REC_DISPLAY "$OUT/raw/rec.mov" >/dev/null 2>&1 &
+# 스크립트가 먼저 끝나므로 부모 PID에 묶지 않고 독립 실행 후 PID를 남긴다
+nohup caffeinate -dimsu >/dev/null 2>&1 &
+echo $! > "$OUT/raw/caffeinate.pid"
+nohup screencapture -v -D $REC_DISPLAY "$OUT/raw/rec.mov" >/dev/null 2>&1 &
 echo $! > "$OUT/raw/rec.pid"
+disown -a 2>/dev/null || true
 sleep 2
 
 date -u +%Y-%m-%dT%H:%M:%SZ > "$OUT/raw/started_at.txt"

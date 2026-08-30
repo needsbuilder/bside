@@ -4,57 +4,48 @@
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Black+Han+Sans&family=Space+Mono:wght@400;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bone:#EFE7D6;      /* uncoated paper */
-    --ink:#1C1A17;       /* press black */
-    --ox:#7B1E28;        /* oxblood — dominant ink */
-    --riso:#2C4BA0;      /* riso blue — structure */
-    --flag:#F5426C;      /* fluorescent pink — the unknowns */
+    --bone:#EFE7D6;
+    --ink:#1C1A17;
+    --ox:#7B1E28;
+    --riso:#2C4BA0;
+    --flag:#F5426C;
     --mute:#8C8577;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   body{
     width:1080px;height:1350px;background:var(--bone);color:var(--ink);
     font-family:'Noto Sans KR',system-ui,sans-serif;
-    display:flex;flex-direction:column;position:relative;overflow:hidden;
+    display:flex;flex-direction:column;
+    padding:96px 68px 88px;
+    position:relative;overflow:hidden;
   }
-  /* paper grain */
   body::after{
     content:'';position:absolute;inset:0;pointer-events:none;opacity:.28;mix-blend-mode:multiply;
     background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3'/></filter><rect width='180' height='180' filter='url(%23n)' opacity='.5'/></svg>");
   }
 
-  /* ── label band ── */
-  .band{
-    background:var(--ox);color:var(--bone);
-    padding:26px 68px;display:flex;justify-content:space-between;align-items:center;
-    font-family:'Space Mono',monospace;font-size:22px;letter-spacing:.3em;
-  }
-  .band .dot{letter-spacing:0;opacity:.55}
-
-  .stage{padding:62px 68px 0;flex:1;display:flex;flex-direction:column}
-
   /* ── wordmark with riso misregistration ── */
-  .mark{position:relative;line-height:.78;height:158px}
+  .mark{position:relative;line-height:.78;height:186px}
   .mark span{
     position:absolute;top:0;left:0;
-    font-family:'Anton',sans-serif;font-size:174px;letter-spacing:-.028em;
+    font-family:'Anton',sans-serif;font-size:204px;letter-spacing:-.028em;
   }
-  .mark .plate-blue{color:var(--riso);transform:translate(7px,6px);mix-blend-mode:multiply;opacity:.92}
+  .mark .plate-blue{color:var(--riso);transform:translate(8px,7px);mix-blend-mode:multiply;opacity:.92}
   .mark .plate-ox{color:var(--ox)}
 
   .kicker{
-    margin-top:14px;font-family:'Space Mono',monospace;font-weight:700;
-    font-size:23px;letter-spacing:.34em;color:var(--riso);
+    margin-top:16px;font-family:'Space Mono',monospace;font-weight:700;
+    font-size:24px;letter-spacing:.34em;color:var(--riso);
   }
   .sub{
-    margin-top:26px;font-family:'Black Han Sans',sans-serif;
-    font-size:46px;letter-spacing:-.02em;color:var(--ink);
+    margin-top:30px;font-family:'Black Han Sans',sans-serif;
+    font-size:50px;letter-spacing:-.02em;color:var(--ink);
   }
 
   /* ── track listing ── */
-  table{width:100%;border-collapse:collapse;margin-top:44px;table-layout:fixed}
+  table{width:100%;border-collapse:collapse;margin-top:56px;table-layout:fixed;flex:1}
   thead th{
-    padding-bottom:15px;font-family:'Space Mono',monospace;font-weight:700;
+    padding-bottom:16px;font-family:'Space Mono',monospace;font-weight:700;
     font-size:18px;letter-spacing:.14em;color:var(--mute);vertical-align:bottom;
   }
   .h-track{text-align:left}
@@ -63,77 +54,42 @@
 
   tbody tr{border-top:2px solid var(--riso)}
   tbody tr:last-child{border-bottom:2px solid var(--riso)}
-  tbody td{padding:40px 0}
+  tbody td{vertical-align:middle}
   .no{
-    font-family:'Space Mono',monospace;font-weight:700;font-size:24px;
+    font-family:'Space Mono',monospace;font-weight:700;font-size:25px;
     color:var(--ox);
   }
-  .name{font-size:33px;font-weight:500;letter-spacing:-.025em;white-space:nowrap}
+  .name{font-size:35px;font-weight:500;letter-spacing:-.025em;white-space:nowrap}
   .q{
     text-align:center;font-family:'Space Mono',monospace;font-weight:700;
-    font-size:36px;color:var(--flag);
-  }
-
-  /* ── colophon ── */
-  .foot{
-    margin-top:auto;padding:34px 68px 46px;
-    display:flex;justify-content:space-between;align-items:flex-end;
-  }
-  .foot .set{font-size:24px;line-height:1.62;color:#57524A}
-  .foot .set b{font-weight:700;color:var(--ink)}
-  .foot .drop{text-align:right}
-  .foot .drop .big{
-    font-family:'Black Han Sans',sans-serif;font-size:44px;color:var(--ox);letter-spacing:-.02em;
-  }
-  .foot .drop .small{
-    margin-top:9px;font-family:'Space Mono',monospace;font-size:18px;
-    letter-spacing:.12em;color:var(--mute);
+    font-size:38px;color:var(--flag);
   }
 </style>
 
-<div class="band">
-  <div>SIDE B</div>
-  <div class="dot">●</div>
-  <div>UNRELEASED</div>
+<div class="mark">
+  <span class="plate-blue">Bside</span>
+  <span class="plate-ox">Bside</span>
 </div>
+<div class="kicker">BENCHMARKS FOR ASIDE</div>
+<div class="sub">자동화 안 되기로 유명한 5곳에서</div>
 
-<div class="stage">
-  <div class="mark">
-    <span class="plate-blue">Bside</span>
-    <span class="plate-ox">Bside</span>
-  </div>
-  <div class="kicker">BENCHMARKS FOR ASIDE</div>
-  <div class="sub">자동화 안 되기로 유명한 5곳에서</div>
-
-  <table>
-    <colgroup>
-      <col style="width:58px"><col><col style="width:138px"><col style="width:150px"><col style="width:150px">
-    </colgroup>
-    <thead>
-      <tr>
-        <th class="h-track" colspan="2">TRACKS</th>
-        <th class="h-arm">ASIDE<em>CLI</em></th>
-        <th class="h-arm">PLAYWRIGHT<em>CLI</em></th>
-        <th class="h-arm">CLAUDE<em>IN CHROME</em></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td class="no">01</td><td class="name">쿠팡 장바구니 담기</td><td class="q">?</td><td class="q">?</td><td class="q">?</td></tr>
-      <tr><td class="no">02</td><td class="name">네이버 블로그 글 발행</td><td class="q">?</td><td class="q">?</td><td class="q">?</td></tr>
-      <tr><td class="no">03</td><td class="name">네이버 지도 예약</td><td class="q">?</td><td class="q">?</td><td class="q">?</td></tr>
-      <tr><td class="no">04</td><td class="name">인스타 맞팔 정리</td><td class="q">?</td><td class="q">?</td><td class="q">?</td></tr>
-      <tr><td class="no">05</td><td class="name">정부24 등본 발급</td><td class="q">?</td><td class="q">?</td><td class="q">?</td></tr>
-    </tbody>
-  </table>
-</div>
-
-<div class="foot">
-  <div class="set">
-    하네스는 <b>Claude Code + Opus 5</b>로 고정<br>
-    브라우저만 바꿔서 같은 프롬프트를 던진다
-  </div>
-  <div class="drop">
-    <div class="big">결과 내일 오전</div>
-    <div class="small">전 과정 녹화 · 채점표 선공개</div>
-  </div>
-</div>
+<table>
+  <colgroup>
+    <col style="width:60px"><col><col style="width:140px"><col style="width:152px"><col style="width:152px">
+  </colgroup>
+  <thead>
+    <tr>
+      <th class="h-track" colspan="2">TRACKS</th>
+      <th class="h-arm">ASIDE<em>CLI</em></th>
+      <th class="h-arm">PLAYWRIGHT<em>CLI</em></th>
+      <th class="h-arm">CLAUDE<em>IN CHROME</em></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td class="no">01</td><td class="name">쿠팡 장바구니 담기</td><td class="q">?</td><td class="q">?</td><td class="q">?</td></tr>
+    <tr><td class="no">02</td><td class="name">네이버 블로그 글 발행</td><td class="q">?</td><td class="q">?</td><td class="q">?</td></tr>
+    <tr><td class="no">03</td><td class="name">네이버 지도 예약</td><td class="q">?</td><td class="q">?</td><td class="q">?</td></tr>
+    <tr><td class="no">04</td><td class="name">인스타 맞팔 정리</td><td class="q">?</td><td class="q">?</td><td class="q">?</td></tr>
+    <tr><td class="no">05</td><td class="name">정부24 등본 발급</td><td class="q">?</td><td class="q">?</td><td class="q">?</td></tr>
+  </tbody>
+</table>

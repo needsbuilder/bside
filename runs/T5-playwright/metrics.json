@@ -27,6 +27,6 @@
     "valid": true
   },
   "video": null,
-  "notes": "904s 타임아웃. 두 사이트 모두 도달(land.naver 52·zigbang 36회) 했으나 최종 표 미완성. 좌초 지점: 직방 단기임대(stay) 섹션이 주 단위 요금 체계라 과제의 보증금/월세 조건과 직접 대응하지 않는 구조 차이를 파악하던 중 종료. 네이버 부동산(지도 iframe+매물 iframe)과 직방(SPA)의 이질적 구조를 오가는 부담이 그대로 드러남 — T4에 이어 playwright 암의 두 번째 연속 타임아웃.",
+  "notes": "904s 타임아웃. 두 사이트 모두 도달(land.naver 52·zigbang 36회)했으나 최종 표 미완성. 좌초 지점: 직방 단기임대(stay) 섹션이 주 단위 요금 체계라 과제의 보증금/월세 조건과 직접 대응하지 않는 구조 차이를 파악하던 중 종료. 네이버 부동산(지도 iframe+매물 iframe)과 직방(SPA)의 이질적 구조를 오가는 부담이 드러남 — T4에 이어 playwright 암의 두 번째 연속 타임아웃.",
   "session_file": "transcript.jsonl"
 }

@@ -3,8 +3,8 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
-echo "| Task | Arm | Outcome | Time(s) | Rec(s) | Tokens | Tool calls | Interv | Rubric |"
-echo "|------|-----|---------|---------|--------|--------|------------|--------|--------|"
+echo "| Task | Arm | Outcome | Time(s) | Rec(s) | Tokens | Tool calls | Cost | Interv | Rubric |"
+echo "|------|-----|---------|---------|--------|--------|------------|------|--------|--------|"
 for f in $(ls runs/*/metrics.json 2>/dev/null | sort); do
-  jq -r '"| \(.task) | \(.arm) | \(.outcome // "?") | \(.wall_seconds) | \(.recording.seconds)\(if .recording.valid then "" else "✗" end) | \(.tokens.total // "?") | \(.tool_calls // "?") | \(.interventions | length) | \([.rubric | to_entries[] | select(.value == true)] | length)/\([.rubric | to_entries[] | select(.value != null)] | length) |"' "$f"
+  jq -r '"| \(.task) | \(.arm) | \(.outcome // "?") | \(.wall_seconds) | \(.recording.seconds)\(if .recording.valid then "" else "✗" end) | \(.tokens.total // "?") | \(.tool_calls // "?") | \(if .cost_usd then "$" + (.cost_usd*100|round/100|tostring) else "-" end) | \(.interventions | length) | \([.rubric | to_entries[] | select(.value == true)] | length)/\([.rubric | to_entries[] | select(.value != null)] | length) |"' "$f"
 done

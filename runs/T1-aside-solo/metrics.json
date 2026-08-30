@@ -10,8 +10,15 @@
     "R3_조건준수": true,
     "R4_발행완료": true
   },
-  "tokens": null,
-  "tool_calls": null,
+  "tokens": {
+    "input": 72,
+    "output": 18785,
+    "cache_read": 1623921,
+    "cache_write": 70528,
+    "reasoning": 5833,
+    "total": 1713306
+  },
+  "tool_calls": 37,
   "interventions": [],
   "block_mode": null,
   "misreads": [],
@@ -22,5 +29,12 @@
     "valid": true
   },
   "video": null,
-  "notes": "475s 완전 성공 (Aside 세션 타임스탬프 기준, 메시지 75개). 발행 링크 https://blog.naver.com/needsbuilder/224395396820 — 하네스 독립 검증: HTTP 200, 본문 1,863자(공백 포함), se-image 3개, se-sectionTitle 4개, 태그 5개(#콜드브루 #콜드브루만들기 #홈카페 #커피레시피 #더치커피). 핵심 대비: 같은 과제에서 aside CLI 암은 파일 선택창에 갇혀 900s 타임아웃했으나, Aside 자체 에이전트(UI 구동)는 사진 3장 삽입을 포함해 완주. 셋업 주의: Aside UI 세션은 파일 접근이 세션 폴더로 샌드박스되어 ~ 접근 불가 → CLI 암과 동일 조건을 맞추려 세션 생성 직후 assets를 세션 폴더에 복사(과제 자료 제공이며 브라우저 작업 보조 아님). 프롬프트 투입은 사람이 UI 입력창에 붙여넣기(컴퓨터유즈로 시도했으나 웹뷰 패널에 합성 입력이 전달되지 않음)."
+  "notes": "475s 완전 성공. 링크 https://blog.naver.com/needsbuilder/224395396820 — 독립 검증(iframe DOM 실측): 본문 1,849자(공백 포함), 사진 3, 소제목 4, 태그 5, 컴포넌트 순서 text>(sec)text>image 반복으로 글-사진 교차 배치 충족. 핵심 대비: 같은 과제에서 aside CLI 암은 파일 선택창에 갇혀 900s 타임아웃, Aside 자체 에이전트는 사진 삽입 포함 완주. 토큰·비용은 Aside 세션 기록(usage)에서 추출 — 단 하네스가 달라(Claude Code 아님) CLI 암과 직접 비교는 참고용. 셋업: Aside UI 세션은 파일 접근이 세션 폴더로 샌드박스되어 세션 생성 직후 assets를 복사(과제 자료 제공, 브라우저 작업 보조 아님). 프롬프트는 사람이 UI 입력창에 붙여넣음(컴퓨터유즈 합성 입력이 웹뷰 패널에 전달되지 않음).",
+  "cost_usd": 1.7227454999999998,
+  "tools_used": {
+    "bash": 2,
+    "read_file": 1,
+    "repl": 34
+  },
+  "session_file": "aside-session.jsonl"
 }

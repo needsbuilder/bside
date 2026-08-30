@@ -6,7 +6,7 @@
   "outcome": "timeout",
   "rubric": {
     "R1_양사이트탐색": true,
-    "R2_조건충족5건": false,
+    "R2_조건충족5건": null,
     "R3_표항목완성": false,
     "R4_중복확인추천": false
   },

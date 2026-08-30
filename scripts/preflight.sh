@@ -10,7 +10,7 @@ echo "=== Bside preflight ==="
 # 1) 화면 녹화 권한·동작 확인 (3초 프로브)
 PROBE=/tmp/bside-probe.mov
 rm -f "$PROBE"
-screencapture -v -V 3 "$PROBE" >/dev/null 2>&1
+screencapture -v -D ${REC_DISPLAY:-2} -V 3 "$PROBE" >/dev/null 2>&1
 if [ -f "$PROBE" ]; then
   DUR=$(ffprobe -v error -show_entries format=duration -of csv=p=0 "$PROBE" 2>/dev/null | cut -d. -f1)
   if [ -n "$DUR" ] && [ "$DUR" -ge 2 ] 2>/dev/null; then

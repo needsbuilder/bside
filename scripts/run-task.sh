@@ -11,6 +11,7 @@ cd "$(dirname "$0")/.."
 TASK=$1; ARM=$2
 MODEL="claude-opus-5"
 TIMEOUT_SECS=${TIMEOUT_SECS:-900}
+REC_DISPLAY=${REC_DISPLAY:-2}   # 녹화 대상 디스플레이 (2 = 맥북 내장 = 서브 모니터)
 
 TASK_FILE=$(ls tasks/${TASK}-*.md 2>/dev/null | head -1)
 [ -f "$TASK_FILE" ] || { echo "과제 파일 없음: $TASK"; exit 1; }
@@ -38,13 +39,14 @@ cat <<BANNER
 └─────────────────────────────────────────────
 프롬프트: ${PROMPT}
 
-3초 후 녹화와 함께 시작합니다. 화면을 잠그거나 절전되지 않게 두세요.
+3초 후 녹화와 함께 시작합니다 (녹화: 디스플레이 ${REC_DISPLAY} = 서브 모니터).
+브라우저 창을 서브 모니터에 두세요. 화면 잠금·절전 금지.
 BANNER
 sleep 3
 
 caffeinate -dimsu -w $$ &   # 실행 동안 절전·화면잠금 방지
 REC_FILE="$OUT/raw/rec.mov"
-screencapture -v "$REC_FILE" >/dev/null 2>&1 &
+screencapture -v -D $REC_DISPLAY "$REC_FILE" >/dev/null 2>&1 &
 REC=$!
 sleep 2
 kill -0 $REC 2>/dev/null || { echo "[중단] 녹화 프로세스가 기동하지 못했습니다. preflight.sh를 먼저 확인하세요."; rm -rf "$OUT"; exit 1; }

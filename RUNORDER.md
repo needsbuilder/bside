@@ -3,19 +3,22 @@
 ## 구조 (2026-08-30 확정)
 
 - **과제 3개**: T1 네이버 블로그 발행 / T2 정부24 등본 / T3 용인 점심 예약(실사용 일정)
-- **통제군 3암**: Claude Code + Opus 5 고정, 브라우저 백엔드만 교체
-  - `aside` (aside CLI) · `playwright` (@playwright/cli) · `chrome` (Claude in Chrome)
+- **통제군 2암**: Claude Code + Opus 5 고정, 브라우저 백엔드만 교체
+  - `aside` (aside CLI) · `playwright` (@playwright/cli)
+  - Claude in Chrome은 제외 — 확장이 naver.com·coupang.com 도메인 이동 자체를
+    차단해(사용자 설정으로 해제 불가) 3과제 중 2개에서 시작이 불가능하다.
+    이 사실은 리포트에 별도 기재한다.
 - **참조군 1암**: `aside-solo` — Aside 자체 에이전트(`aside exec`), 모델 동일(Opus 5).
   하네스가 다르므로 통제 비교가 아니라 "제품이 의도한 형태의 상한"으로 해석.
   토큰·툴콜은 Claude Code 트랜스크립트 밖이라 측정 불가(null)로 표기.
 
 ## 순서 (과제마다 회전, 실행 전 고정)
 
-| Task | 1st | 2nd | 3rd | 4th |
-|------|-----|-----|-----|-----|
-| T1 블로그 | playwright | chrome | aside | aside-solo |
-| T2 정부24 | aside | aside-solo | playwright | chrome |
-| T3 용인 점심 | chrome | playwright | aside-solo | aside |
+| Task | 1st | 2nd | 3rd |
+|------|-----|-----|-----|
+| T1 블로그 | playwright | aside | aside-solo |
+| T2 정부24 | aside | aside-solo | playwright |
+| T3 용인 점심 | aside-solo | playwright | aside |
 
 ## 실행 규칙
 

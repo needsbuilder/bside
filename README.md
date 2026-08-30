@@ -5,15 +5,18 @@
 Does the [Aside](https://aside.com) browser actually outperform existing
 browser-automation setups on the real web? We run the same three tasks — on
 sites notorious for breaking automation (Naver SmartEditor, gov.kr, Naver Map)
-— through four setups. Three are controlled (Claude Code + Opus 5, only the
+— through three setups. Two are controlled (Claude Code + Opus 5, only the
 browser backend changes); one is Aside's own agent as a reference:
 
 | Arm | Interface | Role |
 |-----|-----------|------|
 | Aside | `aside` CLI | controlled |
 | Playwright | `@playwright/cli` | controlled |
-| Claude in Chrome | built-in `--chrome` | controlled |
 | Aside solo | `aside exec` (own agent loop) | reference |
+
+Claude in Chrome was excluded up front: its extension refuses to open
+naver.com and coupang.com at all (a built-in domain policy users cannot
+change), so it cannot even start two of the three tasks.
 
 **Results: TBD after runs** <!-- 결과 요약표 + 영상 링크로 교체 -->
 

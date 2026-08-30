@@ -51,6 +51,13 @@ kill -0 $REC 2>/dev/null || { echo "[중단] 녹화 프로세스가 기동하지
 START=$(date +%s)
 STARTED_AT=$(date -u +%Y-%m-%dT%H:%M:%SZ)
 
+# 격리 작업 디렉터리: 세션이 저장소(= 다른 암의 결과)를 우연히 읽지 못하게 한다.
+# 과제가 참조하는 자료(assets/)만 복사해 넣는다.
+REPO=$(pwd)
+WORK=$(mktemp -d /tmp/bside-run-XXXXXX)
+cp -R assets "$WORK"/ 2>/dev/null || true
+cd "$WORK"
+
 # 암별 도구 격리: 지정 도구만 허용하고 나머지 브라우저 자동화 경로는 차단한다.
 DENY_COMMON=("Bash(playwriter:*)" "Bash(npx playwriter:*)" "Bash(bunx playwriter:*)")
 case $ARM in
@@ -58,24 +65,26 @@ case $ARM in
     timeout $TIMEOUT_SECS claude -p "$PROMPT" --model $MODEL \
       --allowedTools "Bash(aside:*)" \
       --disallowedTools "${DENY_COMMON[@]}" "Bash(npx playwright-cli:*)" \
-      --append-system-prompt "브라우저 작업 규칙: 이 세션의 모든 브라우저 작업은 반드시 aside CLI(aside exec, aside repl)로만 수행한다. 다른 브라우저 자동화 도구는 사용하지 않는다." \
-      2>&1 | tee "$OUT/raw/output.txt";;
+      --append-system-prompt "브라우저 작업 규칙: 이 세션의 모든 브라우저 작업은 반드시 aside CLI(aside exec, aside repl)로만 수행한다. 다른 브라우저 자동화 도구는 사용하지 않는다. 작업은 현재 작업 디렉터리 안에서만 수행하고, 상위 디렉터리나 다른 프로젝트 폴더를 탐색하지 않는다." \
+      2>&1 | tee "$REPO/$OUT/raw/output.txt";;
   playwright)
-    set -a; source .env.local; set +a
+    set -a; source "$REPO/.env.local"; set +a
     npx playwright-cli eval "1" >/dev/null 2>&1 || npx playwright-cli attach --extension=chrome --session default >/dev/null 2>&1
     timeout $TIMEOUT_SECS claude -p "$PROMPT" --model $MODEL \
       --allowedTools "Bash(npx playwright-cli:*)" \
       --disallowedTools "${DENY_COMMON[@]}" "Bash(aside:*)" \
-      --append-system-prompt "브라우저 작업 규칙: 이 세션의 모든 브라우저 작업은 반드시 npx playwright-cli로만 수행한다. 다른 브라우저 자동화 도구는 사용하지 않는다." \
-      2>&1 | tee "$OUT/raw/output.txt";;
+      --append-system-prompt "브라우저 작업 규칙: 이 세션의 모든 브라우저 작업은 반드시 npx playwright-cli로만 수행한다. 다른 브라우저 자동화 도구는 사용하지 않는다. 작업은 현재 작업 디렉터리 안에서만 수행하고, 상위 디렉터리나 다른 프로젝트 폴더를 탐색하지 않는다." \
+      2>&1 | tee "$REPO/$OUT/raw/output.txt";;
   chrome)
     timeout $TIMEOUT_SECS claude --chrome -p "$PROMPT" --model $MODEL \
       --disallowedTools "${DENY_COMMON[@]}" "Bash(aside:*)" "Bash(npx playwright-cli:*)" \
-      --append-system-prompt "브라우저 작업 규칙: 이 세션의 모든 브라우저 작업은 반드시 내장 Claude in Chrome 브라우저 도구로만 수행한다. 다른 브라우저 자동화 도구는 사용하지 않는다." \
-      2>&1 | tee "$OUT/raw/output.txt";;
+      --append-system-prompt "브라우저 작업 규칙: 이 세션의 모든 브라우저 작업은 반드시 내장 Claude in Chrome 브라우저 도구로만 수행한다. 다른 브라우저 자동화 도구는 사용하지 않는다. 작업은 현재 작업 디렉터리 안에서만 수행하고, 상위 디렉터리나 다른 프로젝트 폴더를 탐색하지 않는다." \
+      2>&1 | tee "$REPO/$OUT/raw/output.txt";;
 esac
 EXIT_CODE=${PIPESTATUS[0]}
 WALL=$(( $(date +%s) - START ))
+cd "$REPO"
+rm -rf "$WORK"
 
 # 녹화 종료 + finalize 대기 (파일이 커질수록 수 초 걸린다)
 kill -INT $REC 2>/dev/null

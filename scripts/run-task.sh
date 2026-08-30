@@ -87,7 +87,15 @@ case $ARM in
 esac
 EXIT_CODE=${PIPESTATUS[0]}
 WALL=$(( $(date +%s) - START ))
+
+# 이 실행의 세션 트랜스크립트를 확보한다 (격리 폴더 경로 기준 slug).
+SLUG=$(printf '%s' "$WORK" | sed 's|^/private||; s|/|-|g')
+SLUG_DIR="$HOME/.claude/projects/-private${SLUG}"
+[ -d "$SLUG_DIR" ] || SLUG_DIR="$HOME/.claude/projects/${SLUG}"
+SESSION=$(ls -t "$SLUG_DIR"/*.jsonl 2>/dev/null | head -1)
+
 cd "$REPO"
+[ -n "$SESSION" ] && cp "$SESSION" "$OUT/raw/transcript.jsonl"
 rm -rf "$WORK"
 
 # 녹화 종료 + finalize 대기 (파일이 커질수록 수 초 걸린다)

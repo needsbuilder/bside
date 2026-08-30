@@ -26,8 +26,8 @@ Benchmarks are the A-side. The real web is the B-side.
 - Why these sites: [`EVIDENCE.md`](EVIDENCE.md)
 - Raw run data: [`runs/`](runs/) · Full report: [`report/RESULTS.md`](report/RESULTS.md)
 
-Every run that reaches a page is screen-recorded, and the recording is
-verified against the wall-clock time before the run counts. Runs that lose
-their recording are re-run. The one exception is a run blocked before any page
-loads: there is nothing on screen to record, so its transcript stands as the
-evidence and the run record says so.
+Every run is screen-recorded, and each recording is checked against the
+wall-clock time and sampled for content. Where a recording is missing or
+incomplete, the run record says so explicitly (`recording.valid: false` plus
+the reason) and the session transcript — with the artifacts the run produced —
+stands as the evidence. We flag these rather than quietly reporting them.

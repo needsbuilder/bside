@@ -52,11 +52,13 @@ and the lunch recommendation is used as-is.
   harness level, so a run cannot silently escape into another arm's tooling.
 - Every run is screen-recorded. Before the run, recording permission is
   verified with a probe capture; after the run, the recording's duration is
-  checked against the wall clock. **A run without a valid recording does not
-  count and is re-run** — except when the arm is blocked before any page loads,
-  in which case nothing appears on screen and the session transcript stands as
-  the evidence. Such runs are marked in `runs/**/metrics.json` with
-  `recording.valid: false` and the reason.
+  checked against the wall clock and frames are sampled to confirm the working
+  window was captured. **Where a recording is missing or incomplete, the run is
+  still reported but flagged**: `runs/**/metrics.json` carries
+  `recording.valid: false` and `recording.absent_reason`, and the evidence for
+  that run is its session transcript plus any artifacts it produced (published
+  URLs, saved files, screenshots the agent captured). We never report such a
+  run as if it were fully recorded.
 - One run per arm per task. Only infrastructure failures (tool crash, network)
   may be retried, and retries are recorded.
 

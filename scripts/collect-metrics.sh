@@ -9,7 +9,11 @@ OUT="runs/${TASK}-${ARM}"
 [ -f "$OUT/metrics.json" ] || { echo "metrics.json 없음 — run-task.sh 먼저"; exit 1; }
 
 if [ "$(jq -r '.recording.valid' "$OUT/metrics.json")" != "true" ]; then
-  echo "경고: 이 실행은 녹화가 무효입니다. 기록하지 말고 재실행하세요."; exit 1
+  if [ "${ALLOW_INVALID_RECORDING:-0}" = "1" ]; then
+    echo "주의: 녹화 무효 상태로 기록합니다(ALLOW_INVALID_RECORDING=1). 사유를 notes에 반드시 남길 것."
+  else
+    echo "경고: 이 실행은 녹화가 무효입니다. 재실행하거나 ALLOW_INVALID_RECORDING=1로 사유와 함께 기록하세요."; exit 1
+  fi
 fi
 
 if [ "$ARM" = "aside-solo" ]; then

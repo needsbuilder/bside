@@ -1,0 +1,21 @@
+{
+  "task": "T3",
+  "arm": "aside-solo",
+  "started_at": "2026-08-30T16:52:30Z",
+  "wall_seconds": 734,
+  "outcome": null,
+  "rubric": {},
+  "tokens": null,
+  "tool_calls": null,
+  "interventions": [],
+  "block_mode": null,
+  "misreads": [],
+  "retried_infra": false,
+  "driver": "UI (사람이 쓰듯 Aside 에이전트 입력창에 프롬프트 투입, 컴퓨터유즈로 타이핑)",
+  "recording": {
+    "seconds": 445,
+    "valid": false
+  },
+  "video": null,
+  "notes": ""
+}

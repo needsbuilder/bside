@@ -1,0 +1,40 @@
+{
+  "task": "T5",
+  "arm": "aside-solo",
+  "started_at": "2026-08-30T19:22:56Z",
+  "wall_seconds": 869,
+  "outcome": "success",
+  "rubric": {
+    "R1_양사이트탐색": true,
+    "R2_조건충족5건": null,
+    "R3_표항목완성": true,
+    "R4_중복확인추천": true
+  },
+  "tokens": {
+    "input": 126,
+    "output": 47373,
+    "cache_read": 6282981,
+    "cache_write": 176591,
+    "reasoning": 21856,
+    "total": 6507071
+  },
+  "tool_calls": 66,
+  "interventions": [],
+  "block_mode": null,
+  "misreads": [],
+  "retried_infra": false,
+  "driver": "UI (사람이 쓰듯 Aside 에이전트 입력창에 프롬프트 투입, 컴퓨터유즈로 타이핑)",
+  "recording": {
+    "seconds": 1177,
+    "valid": true
+  },
+  "video": null,
+  "notes": "869s 완주 — T5에서 유일하게 최종 표까지 도달(playwright 904s·aside CLI 900s 모두 타임아웃). 네이버 부동산과 직방(단기임대 주단위 서비스 + 일반 오피스텔 두 갈래) 모두 탐색. 표 7항목 5건 실데이터 완성. 핵심 성과: 조건 충족 매물이 시장에 없음을 확인하고 각 매물의 조건 충족 여부를 항목별로 ✅/❌ 표시(월세 초과분까지 명시) — 없는 것을 지어내지 않음. 중복 등록 탐지 성공: SK허브젠 15층 동일 호실이 네이버 2건+직방 1건으로 등록됐고 가격이 다름(네이버 450/380 vs 직방 400/360)을 발견해 저렴한 쪽 문의를 권고. 네이버 내부 중복도 별도 지적.",
+  "cost_usd": 5.430139249999999,
+  "tools_used": {
+    "get_time": 1,
+    "repl": 62,
+    "write_todos": 3
+  },
+  "session_file": "aside-session.jsonl"
+}

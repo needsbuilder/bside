@@ -1,0 +1,32 @@
+{
+  "task": "T5",
+  "arm": "aside",
+  "started_at": "2026-08-30T19:07:22Z",
+  "wall_seconds": 900,
+  "outcome": "timeout",
+  "rubric": {
+    "R1_양사이트탐색": true,
+    "R2_조건충족5건": false,
+    "R3_표항목완성": false,
+    "R4_중복확인추천": false
+  },
+  "tokens": {
+    "input_fresh": 178,
+    "cache_read": 5119921,
+    "cache_creation": 229206,
+    "output": 56991,
+    "total": 5406296
+  },
+  "tool_calls": 50,
+  "interventions": [],
+  "block_mode": null,
+  "misreads": [],
+  "retried_infra": false,
+  "recording": {
+    "seconds": 899,
+    "valid": true
+  },
+  "video": null,
+  "notes": "900s 타임아웃. 두 사이트 도달(land.naver 23·zigbang 58회). 접근 방식이 playwright와 달랐음 — UI 탐색 대신 직방의 내부 API 엔드포인트를 찾아 필터 적용 후 응답을 직접 읽는 경로를 택했고, 지하철역 기반 API까지 특정했으나 응답 구조 파악 중 시간 소진. 최종 표 미도달. T5는 두 통제군 모두 타임아웃.",
+  "session_file": "transcript.jsonl"
+}

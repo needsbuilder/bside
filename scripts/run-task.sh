@@ -65,7 +65,7 @@ case $ARM in
     timeout $TIMEOUT_SECS claude -p "$PROMPT" --model $MODEL \
       --allowedTools "Bash(aside:*)" \
       --disallowedTools "${DENY_COMMON[@]}" "Bash(npx playwright-cli:*)" \
-      --append-system-prompt "브라우저 작업 규칙: 이 세션의 모든 브라우저 작업은 반드시 aside CLI(aside exec, aside repl)로만 수행한다. 다른 브라우저 자동화 도구는 사용하지 않는다. 작업은 현재 작업 디렉터리 안에서만 수행하고, 상위 디렉터리나 다른 프로젝트 폴더를 탐색하지 않는다." \
+      --append-system-prompt "브라우저 작업 규칙: 이 세션의 모든 브라우저 작업은 반드시 aside CLI(aside exec, aside repl)로만 수행한다. 다른 브라우저 자동화 도구는 사용하지 않는다. 작업은 현재 작업 디렉터리 안에서만 수행하고, 상위 디렉터리나 다른 프로젝트 폴더를 탐색하지 않는다. 화면이 녹화되고 있으므로 작업 중인 탭을 항상 화면 맨 앞의 활성 탭으로 두고 조작한다. 백그라운드 탭에서 조작하지 않는다." \
       2>&1 | tee "$REPO/$OUT/raw/output.txt";;
   playwright)
     set -a; source "$REPO/.env.local"; set +a
@@ -77,12 +77,12 @@ case $ARM in
     timeout $TIMEOUT_SECS claude -p "$PROMPT" --model $MODEL \
       --allowedTools "Bash(npx playwright-cli:*)" \
       --disallowedTools "${DENY_COMMON[@]}" "Bash(aside:*)" \
-      --append-system-prompt "브라우저 작업 규칙: 이 세션의 모든 브라우저 작업은 반드시 npx playwright-cli로만 수행한다. 브라우저는 이미 사용자의 로그인된 Chrome에 연결되어 있다(세션 이름 default). open 명령으로 새 브라우저를 띄우지 말고 기존 세션을 그대로 사용한다. 새 탭이 필요하면 tab-new를 쓴다. 다른 브라우저 자동화 도구는 사용하지 않는다. 작업은 현재 작업 디렉터리 안에서만 수행하고, 상위 디렉터리나 다른 프로젝트 폴더를 탐색하지 않는다." \
+      --append-system-prompt "브라우저 작업 규칙: 이 세션의 모든 브라우저 작업은 반드시 npx playwright-cli로만 수행한다. 브라우저는 이미 사용자의 로그인된 Chrome에 연결되어 있다(세션 이름 default). open 명령으로 새 브라우저를 띄우지 말고 기존 세션을 그대로 사용한다. 새 탭이 필요하면 tab-new를 쓴다. 다른 브라우저 자동화 도구는 사용하지 않는다. 작업은 현재 작업 디렉터리 안에서만 수행하고, 상위 디렉터리나 다른 프로젝트 폴더를 탐색하지 않는다. 화면이 녹화되고 있으므로 작업 중인 탭을 항상 화면 맨 앞의 활성 탭으로 두고 조작한다. 백그라운드 탭에서 조작하지 않는다." \
       2>&1 | tee "$REPO/$OUT/raw/output.txt";;
   chrome)
     timeout $TIMEOUT_SECS claude --chrome -p "$PROMPT" --model $MODEL \
       --disallowedTools "${DENY_COMMON[@]}" "Bash(aside:*)" "Bash(npx playwright-cli:*)" \
-      --append-system-prompt "브라우저 작업 규칙: 이 세션의 모든 브라우저 작업은 반드시 내장 Claude in Chrome 브라우저 도구로만 수행한다. 다른 브라우저 자동화 도구는 사용하지 않는다. 작업은 현재 작업 디렉터리 안에서만 수행하고, 상위 디렉터리나 다른 프로젝트 폴더를 탐색하지 않는다." \
+      --append-system-prompt "브라우저 작업 규칙: 이 세션의 모든 브라우저 작업은 반드시 내장 Claude in Chrome 브라우저 도구로만 수행한다. 다른 브라우저 자동화 도구는 사용하지 않는다. 작업은 현재 작업 디렉터리 안에서만 수행하고, 상위 디렉터리나 다른 프로젝트 폴더를 탐색하지 않는다. 화면이 녹화되고 있으므로 작업 중인 탭을 항상 화면 맨 앞의 활성 탭으로 두고 조작한다. 백그라운드 탭에서 조작하지 않는다." \
       2>&1 | tee "$REPO/$OUT/raw/output.txt";;
 esac
 EXIT_CODE=${PIPESTATUS[0]}
@@ -120,11 +120,20 @@ jq -n --arg task "$TASK" --arg arm "$ARM" --arg started "$STARTED_AT" \
   block_mode: null, misreads: [], retried_infra: false,
   recording: { seconds: $recdur, valid: $recvalid }, video: null, notes: "" }' > "$OUT/metrics.json"
 
+# 녹화 내용 확인용 프레임 3장 (25%/50%/75% 지점)
+if [ "$REC_DUR" -gt 10 ] 2>/dev/null; then
+  for pct in 25 50 75; do
+    ffmpeg -v error -ss $(( REC_DUR * pct / 100 )) -i "$REC_FILE" -frames:v 1 \
+      -vf scale=1100:-1 "$OUT/raw/frame-${pct}.png" -y 2>/dev/null
+  done
+fi
+
 echo ""
 echo "─────────────────────────────────────────────"
 echo "실행 ${WALL}초 (timeout: $TIMED_OUT) · 녹화 ${REC_DUR}초"
 if [ "$REC_VALID" = true ]; then
   echo "[OK] 녹화 유효 — 이 실행은 기록 대상입니다."
+  echo "샘플 프레임: $OUT/raw/frame-{25,50,75}.png — 작업 화면이 담겼는지 확인할 것"
   echo "다음: ./scripts/collect-metrics.sh $TASK $ARM"
 else
   echo "[무효] 녹화가 실행 시간을 담지 못했습니다. 이 실행은 폐기하고 재실행하세요:"

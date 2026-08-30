@@ -1,0 +1,32 @@
+{
+  "task": "A2",
+  "arm": "playwright",
+  "started_at": "2026-08-30T07:47:40Z",
+  "wall_seconds": 667,
+  "outcome": "success",
+  "rubric": {
+    "R1_에디터생존": true,
+    "R2_교차배치": true,
+    "R3_조건준수": true,
+    "R4_발행완료": true
+  },
+  "tokens": {
+    "input_fresh": 232,
+    "cache_read": 7389383,
+    "cache_creation": 194165,
+    "output": 79130,
+    "total": 7662910
+  },
+  "tool_calls": 53,
+  "interventions": [],
+  "block_mode": null,
+  "misreads": [],
+  "retried_infra": false,
+  "recording": {
+    "seconds": 668,
+    "valid": true
+  },
+  "video": null,
+  "notes": "667s 완전 성공 — 스마트에디터 발행 관문 통과. 링크 https://blog.naver.com/needsbuilder/224395097419 (하네스가 HTTP 200·og:title·RSS로 독립 검증). 본문 1,975자(공백포함)/1,514자(제외)로 두 기준 모두 충족, 소제목 4개, 태그 5개, 글-사진 교차 배치 정확. 발견: 확장 릴레이 환경에서 DOM.setFileInputFiles 차단되어 사진 추가 버튼 사용 불가 → 드래그앤드롭으로 우회. 본문 말미에 벤치마크·AI이미지 고지 삽입.",
+  "session_file": "transcript.jsonl"
+}

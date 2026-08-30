@@ -1,0 +1,32 @@
+{
+  "task": "T3",
+  "arm": "playwright",
+  "started_at": "2026-08-30T14:52:42Z",
+  "wall_seconds": 760,
+  "outcome": "success",
+  "rubric": {
+    "R1_후보발굴": true,
+    "R2_비교표품질": true,
+    "R3_추천근거": true,
+    "R4_예약또는영업확인": true
+  },
+  "tokens": {
+    "input_fresh": 224,
+    "cache_read": 7128886,
+    "cache_creation": 273602,
+    "output": 89570,
+    "total": 7492282
+  },
+  "tool_calls": 52,
+  "interventions": [],
+  "block_mode": null,
+  "misreads": [],
+  "retried_infra": false,
+  "recording": {
+    "seconds": 761,
+    "valid": true
+  },
+  "video": null,
+  "notes": "760s 완전 성공. 후보 3곳(샐러리아 동백역점/샐러디 동백점/미담 소고기국밥)을 도보 거리·주소·메뉴·가격대·월요일 영업시간·브레이크타임·평점까지 실데이터로 비교. 도보 거리를 분/미터뿐 아니라 걸음 수·횡단보도 횟수까지 산출. 1순위 샐러리아(도보 1분, 같은 블록)를 근거와 함께 추천. 네이버 예약은 세 곳 모두 미지원임을 플레이스 페이지에서 확인(booking.naver.com 링크 부재)하고 과제 규정대로 월요일 12시 영업·브레이크타임 확인으로 대체, 전화번호·포장 가능 여부까지 제공. 제외 후보 4곳의 사유도 명시(도보 11분 초과, 1.5km, 가격대 등). 녹화 frame-50에 지도 검색·상세 조회 장면 확인.",
+  "session_file": "transcript.jsonl"
+}

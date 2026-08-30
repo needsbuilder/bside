@@ -1,0 +1,32 @@
+{
+  "task": "T1",
+  "arm": "aside",
+  "started_at": "2026-08-30T13:26:50Z",
+  "wall_seconds": 900,
+  "outcome": "timeout",
+  "rubric": {
+    "R1_에디터생존": false,
+    "R2_교차배치": false,
+    "R3_조건준수": false,
+    "R4_발행완료": false
+  },
+  "tokens": {
+    "input_fresh": 230,
+    "cache_read": 7578952,
+    "cache_creation": 217165,
+    "output": 81869,
+    "total": 7878216
+  },
+  "tool_calls": 63,
+  "interventions": [],
+  "block_mode": null,
+  "misreads": [],
+  "retried_infra": false,
+  "recording": {
+    "seconds": 853,
+    "valid": true
+  },
+  "video": null,
+  "notes": "900s 타임아웃. 스마트에디터 진입까지는 성공했으나 사진 첨부 단계에서 macOS 네이티브 파일 선택창을 띄워 자동화가 정지(frame-75에 그 장면이 그대로 녹화됨). 파일 선택창은 CDP로 제어 불가라 스스로 빠져나오지 못했고, 사람이 닫아주면 개입이 되므로 그대로 타임아웃 처리. 대비: playwright 암은 같은 관문에서 DOM.setFileInputFiles 차단을 만나 드래그앤드롭으로 우회해 발행 성공. 콜드 스타트(메모리 초기화 후) 실행.",
+  "session_file": "transcript.jsonl"
+}

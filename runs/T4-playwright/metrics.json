@@ -1,0 +1,32 @@
+{
+  "task": "T4",
+  "arm": "playwright",
+  "started_at": "2026-08-30T18:03:28Z",
+  "wall_seconds": 903,
+  "outcome": "timeout",
+  "rubric": {
+    "R1_양사이트탐색": true,
+    "R2_마감전공고": null,
+    "R3_표항목완성": false,
+    "R4_적합판단추천": false
+  },
+  "tokens": {
+    "input_fresh": 310,
+    "cache_read": 14202476,
+    "cache_creation": 377948,
+    "output": 115557,
+    "total": 14696291
+  },
+  "tool_calls": 65,
+  "interventions": [],
+  "block_mode": null,
+  "misreads": [],
+  "retried_infra": false,
+  "recording": {
+    "seconds": 904,
+    "valid": true
+  },
+  "video": null,
+  "notes": "903s 타임아웃 — playwright 암의 첫 실패. 두 사이트(bizinfo 53회·k-startup 51회 언급) 모두 탐색에 성공했고 공고 후보(1인창조기업 모집 등, 마감일 2026-09-07/09-09 D-7/D-9)까지 수집했으나, 지원금 규모를 정확히 채우려고 공고 첨부파일(PDF·HWP)을 내려받아 텍스트 추출(hwp5html)을 시도하다 시간 소진. 최종 표·추천 미도달. 실패 원인이 브라우저 조작이 아니라 문서 파싱이라는 점이 특이 — 과제의 지원금 항목이 첨부파일에만 있는 경우가 많아 생긴 병목. R2는 후보를 확보했으나 5건 확정 전 종료라 판정 보류(null).",
+  "session_file": "transcript.jsonl"
+}

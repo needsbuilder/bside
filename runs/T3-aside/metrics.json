@@ -1,0 +1,32 @@
+{
+  "task": "T3",
+  "arm": "aside",
+  "started_at": "2026-08-30T16:36:31Z",
+  "wall_seconds": 899,
+  "outcome": "timeout",
+  "rubric": {
+    "R1_후보발굴": true,
+    "R2_비교표품질": false,
+    "R3_추천근거": false,
+    "R4_예약또는영업확인": false
+  },
+  "tokens": {
+    "input_fresh": 186,
+    "cache_read": 4773961,
+    "cache_creation": 218436,
+    "output": 67460,
+    "total": 5060043
+  },
+  "tool_calls": 41,
+  "interventions": [],
+  "block_mode": null,
+  "misreads": [],
+  "retried_infra": false,
+  "recording": {
+    "seconds": 902,
+    "valid": true
+  },
+  "video": null,
+  "notes": "899s 타임아웃. 도달 지점: V프라자 주소 검색 성공 → 키워드별 순차 검색으로 후보군 확보 → 상세 페이지(entryIframe) 진입까지 성공했으나 정보 추출 중 시간 소진. 최종 비교표·추천·영업확인 미도달. 네이버 지도의 이중 iframe(searchIframe/entryIframe) 구조는 통과했다는 점이 T1의 파일 선택창 좌초와 다른 양상. 대비: playwright 암은 같은 과제를 760s에 4/4로 완주. 콜드 스타트, 개입 0회. 녹화 frame-75에 지도 검색·주소 조회 화면 확인.",
+  "session_file": "transcript.jsonl"
+}

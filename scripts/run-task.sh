@@ -51,6 +51,13 @@ REC=$!
 sleep 2
 kill -0 $REC 2>/dev/null || { echo "[중단] 녹화 프로세스가 기동하지 못했습니다. preflight.sh를 먼저 확인하세요."; rm -rf "$OUT"; exit 1; }
 
+# aside 계열은 매 실행 전 로컬 메모리를 비워 콜드 스타트로 맞춘다.
+# (이전 실행에서 학습한 사이트 공략이 다음 실행의 이점이 되는 것을 막는다)
+if [ "$ARM" = "aside" ] || [ "$ARM" = "aside-solo" ]; then
+  rm -rf "$HOME/.aside/u/0/memory" && mkdir -p "$HOME/.aside/u/0/memory"
+  echo "[준비] Aside 로컬 메모리 초기화 완료 (콜드 스타트)"
+fi
+
 START=$(date +%s)
 STARTED_AT=$(date -u +%Y-%m-%dT%H:%M:%SZ)
 

@@ -109,6 +109,12 @@ SESSION=$(ls -t "$SLUG_DIR"/*.jsonl 2>/dev/null | head -1)
 
 cd "$REPO"
 [ -n "$SESSION" ] && cp "$SESSION" "$OUT/raw/transcript.jsonl"
+
+# 실행이 작업폴더에 남긴 산출물을 보존한다 (assets 사본은 제외)
+mkdir -p "$OUT/raw/artifacts"
+(cd "$WORK" && find . -type f -not -path "./assets/*" -print0 2>/dev/null | \
+  xargs -0 -I{} cp -p "{}" "$REPO/$OUT/raw/artifacts/" 2>/dev/null) || true
+rmdir "$OUT/raw/artifacts" 2>/dev/null || true
 rm -rf "$WORK"
 
 # 녹화 종료 + finalize 대기 (파일이 커질수록 수 초 걸린다)

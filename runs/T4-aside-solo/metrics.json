@@ -1,0 +1,41 @@
+{
+  "task": "T4",
+  "arm": "aside-solo",
+  "started_at": "2026-08-30T18:36:42Z",
+  "wall_seconds": 296,
+  "outcome": "success",
+  "rubric": {
+    "R1_양사이트탐색": true,
+    "R2_마감전공고": true,
+    "R3_표항목완성": true,
+    "R4_적합판단추천": true
+  },
+  "tokens": {
+    "input": 44,
+    "output": 17161,
+    "cache_read": 1142141,
+    "cache_write": 98986,
+    "reasoning": 8417,
+    "total": 1258332
+  },
+  "tool_calls": 23,
+  "interventions": [],
+  "block_mode": null,
+  "misreads": [],
+  "retried_infra": false,
+  "driver": "UI (사람이 쓰듯 Aside 에이전트 입력창에 프롬프트 투입, 컴퓨터유즈로 타이핑)",
+  "recording": {
+    "seconds": 408,
+    "valid": true
+  },
+  "video": null,
+  "notes": "296s 완전 성공 — 두 통제군(playwright 903s, aside CLI 903s)이 모두 타임아웃한 과제를 5분 만에 완주. 표 7항목(사업명·주관기관·지원내용·지원금·마감일·자격요건) 5건 실데이터, 마감일 전부 실행일 이후(9/3~9/17). 우선순위 추천에 근거 제시, 제외 공고 4건과 사유(과기원 추천 필수·폐쇄형·타 시 전용·분야 한정)까지 정리. 근거 스크린샷 첨부. 두 통제군이 막혔던 지원금 규모 확보를 첨부파일 파싱 대신 공고 본문에서 해결한 것이 갈린 지점으로 보임.",
+  "cost_usd": 1.6189780000000003,
+  "tools_used": {
+    "get_time": 1,
+    "repl": 20,
+    "websearch": 1,
+    "write_todos": 1
+  },
+  "session_file": "aside-session.jsonl"
+}

@@ -2,7 +2,7 @@
 
 ## 구조 (2026-08-30 확정)
 
-- **과제 3개**: T1 네이버 블로그 발행 / T2 정부24 등본 / T3 용인 점심 예약(실사용 일정)
+- **과제 3개**: T1 네이버 블로그 발행 / T2 홈택스 사업자등록증명 / T3 용인 점심 예약(실사용 일정)
 - **통제군 2암**: Claude Code + Opus 5 고정, 브라우저 백엔드만 교체
   - `aside` (aside CLI) · `playwright` (@playwright/cli)
   - Claude in Chrome은 제외 — 확장이 naver.com·coupang.com 도메인 이동 자체를
@@ -22,7 +22,7 @@
 | Task | 1st | 2nd | 3rd |
 |------|-----|-----|-----|
 | T1 블로그 | playwright | aside | aside-solo |
-| T2 정부24 | aside | aside-solo | playwright |
+| T2 홈택스 | aside | aside-solo | playwright |
 | T3 용인 점심 | aside-solo | playwright | aside |
 
 ## 실행 규칙

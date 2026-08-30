@@ -4,7 +4,7 @@
 
 Does the [Aside](https://aside.com) browser actually outperform existing
 browser-automation setups on the real web? We run the same three tasks — on
-sites notorious for breaking automation (Naver SmartEditor, gov.kr, Naver Map)
+sites notorious for breaking automation (Naver SmartEditor, Hometax, Naver Map)
 — through three setups. Two are controlled (Claude Code + Opus 5, only the
 browser backend changes); one is Aside's own agent as a reference:
 

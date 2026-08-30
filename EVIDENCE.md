@@ -35,7 +35,7 @@ breaking conventional automation:
 | Task | Site | Public failure evidence |
 |------|------|------------------------|
 | T1 | Naver Blog (SmartEditor) | Editor built on Naver's deprecated Jindo JS framework ([namu.wiki](https://namu.wiki/w/%EC%8A%A4%EB%A7%88%ED%8A%B8%EC%97%90%EB%94%94%ED%84%B0)); iframe handling issues ([naver/smarteditor2#226](https://github.com/naver/smarteditor2/issues/226)) |
-| T2 | gov.kr (정부24) | Mandatory security programs (AnySign4PC, TouchEn nxKey, ezCert) ([official](https://plus.gov.kr/portal/scrtycntr/scrtyprgrm/)); official notice restricting macro/automation users ([gov.kr notice](https://www.gov.kr/portal/ntcItm/108068?Mcode=1118)) |
+| T2 | Hometax (홈택스) | Legacy popup-driven UI plus mandatory security software; Korea's tax portal is a long-standing automation graveyard for exactly these reasons. Login is done by a human before the run — credential entry is never automated in this benchmark. |
 | T3 | Naver Map/Place | Dual-iframe structure (searchIframe/entryIframe) trips Selenium ([Inflearn Q&A](https://www.inflearn.com/community/questions/665581)); Naver runs an in-house bot-blocking system with irregular enforcement ([hashscraper](https://blog.hashscraper.com/posts/reasons-why-naver-crawling-is-blocked-and-solutions?locale=ko)) |
 
 T3 is a real errand: the author actually travels to this meeting the next day,

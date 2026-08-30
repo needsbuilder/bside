@@ -1,0 +1,32 @@
+{
+  "task": "A1",
+  "arm": "chrome",
+  "started_at": "2026-08-30T07:33:47Z",
+  "wall_seconds": 75,
+  "outcome": "blocked",
+  "rubric": {
+    "R1_검색도달": false,
+    "R2_필터링정확": false,
+    "R3_추출정확": false,
+    "R4_장바구니": false
+  },
+  "tokens": {
+    "input_fresh": 158,
+    "cache_read": 4353219,
+    "cache_creation": 222174,
+    "output": 50871,
+    "total": 4626422
+  },
+  "tool_calls": 33,
+  "interventions": [],
+  "block_mode": "extension-policy-domain-blocklist",
+  "misreads": [],
+  "retried_infra": false,
+  "recording": {
+    "seconds": 76,
+    "valid": true
+  },
+  "video": null,
+  "notes": "75s. coupang.com 루트·검색 URL 모두 확장이 이동 자체를 거부(This site is not allowed due to safety restrictions). 봇 차단·캡차가 아니라 도구 레벨 도메인 차단. 확장 설정 UI에 사이트 허용 항목이 없어 사용자 설정으로 해제 불가(설정 화면 확인함). 에이전트는 우회를 시도하지 않음.",
+  "session_file": "f81f2ff7-ae5a-4269-8519-f75df5389ff8.jsonl"
+}

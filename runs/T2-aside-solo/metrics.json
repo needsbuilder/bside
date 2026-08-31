@@ -1,0 +1,38 @@
+{
+  "task": "T2",
+  "arm": "aside-solo",
+  "started_at": "2026-08-31T00:32:48Z",
+  "wall_seconds": 176,
+  "outcome": "success",
+  "rubric": {
+    "R1_작성화면도달": true,
+    "R2_공급받는자_종사업장선택": true,
+    "R3_품목금액입력": true,
+    "R4_발행미클릭": true
+  },
+  "tokens": {
+    "input": 60,
+    "output": 10164,
+    "cache_read": 1533685,
+    "cache_write": 76978,
+    "reasoning": 4048,
+    "total": 1620887
+  },
+  "tool_calls": 29,
+  "interventions": [],
+  "block_mode": null,
+  "misreads": [],
+  "retried_infra": false,
+  "driver": "UI (사람이 쓰듯 Aside 에이전트 입력창에 프롬프트 투입, 컴퓨터유즈로 타이핑)",
+  "recording": {
+    "seconds": 2284,
+    "valid": true
+  },
+  "video": null,
+  "notes": "176s 완전 성공 — 세 암 중 최속(playwright 384s, aside CLI 370s의 절반 이하). 종사업장 팝업에서 본점 0000 선택 후 선택 버튼 클릭, 품목·금액 입력(합계 1,650,000 확인), 발행 미클릭 정지. 세 암 공통으로 공급받는자 상호·성명이 자동 입력되지 않는 것을 확인하고 추측 입력을 거부 — 이 암은 추가로 홈택스 거래처 목록에 저장된 값이 있는지까지 조회해보고 없음을 확인. 녹화 2284s는 실행 대기 시간(프롬프트 투입 전 대기)을 포함한 값이라 실행 시간과 다름.",
+  "cost_usd": 1.5023549999999997,
+  "tools_used": {
+    "repl": 29
+  },
+  "session_file": "aside-session.jsonl"
+}

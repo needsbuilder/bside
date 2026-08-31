@@ -1,0 +1,32 @@
+{
+  "task": "T2",
+  "arm": "playwright",
+  "started_at": "2026-08-31T00:15:22Z",
+  "wall_seconds": 384,
+  "outcome": "success",
+  "rubric": {
+    "R1_작성화면도달": true,
+    "R2_공급받는자_종사업장선택": true,
+    "R3_품목금액입력": true,
+    "R4_발행미클릭": true
+  },
+  "tokens": {
+    "input_fresh": 230,
+    "cache_read": 7311011,
+    "cache_creation": 250607,
+    "output": 56926,
+    "total": 7618774
+  },
+  "tool_calls": 50,
+  "interventions": [],
+  "block_mode": null,
+  "misreads": [],
+  "retried_infra": false,
+  "recording": {
+    "seconds": 386,
+    "valid": true
+  },
+  "video": null,
+  "notes": "384s 완전 성공. 종사업장 선택 팝업에서 본점 0000(분당세무서) 정확히 선택, 사업자번호 확인 통과, 작성일자 2026-08-31·품목·공급가액 1,500,000·세액 150,000(합계 1,650,000) 입력, 발행 버튼 미클릭 상태로 정지. 주목할 판단: 프롬프트에 없던 공급받는자 상호·성명(홈택스 필수항목)을 추측해 넣지 않고 사용자에게 확인 요청 — 세금계산서가 법적 문서라는 이유를 들어 거부. 자체 오류 복구: 세액 칸에 값이 중복 입력되는 현상을 발견해 비우고 재입력 후 DOM·화면 양쪽으로 검증. 과제 설계 메모: 프롬프트가 상호·성명을 지정하지 않아 세 암 모두 이 항목은 공란이 예상되며, 채점 대상이 아니다.",
+  "session_file": "transcript.jsonl"
+}

@@ -5,3 +5,4 @@ runs/**/raw/
 .DS_Store
 .env.local
 .playwright-cli/
+!media/*.mp4

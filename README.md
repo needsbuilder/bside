@@ -38,6 +38,14 @@ they flatter any tool. Each is something a Korean solo founder actually does.
 | T4 | Match government grant programs to a solo business | bizinfo + K-Startup |
 | T5 | Cross-check rental listings across two portals | Naver Land + Zigbang |
 
+### Watch one
+
+[**T4, all three arms side by side**](media/T4-split.mp4) (8× speed, 118s) —
+same task, same model, same prompt, three browser backends. Aside solo finishes
+at 4:56; the other two are still working when the 15-minute cap hits. Browser
+chrome is cropped out of every frame, so what you see is only the public grant
+listings the runs were reading.
+
 Definitions and rubrics are in [`tasks/`](tasks/), **committed before any run** —
 the git history is the proof. Where we later found a flaw in our own task design
 (T5's price cap made the criteria unsatisfiable; T2's first draft asked a
@@ -74,8 +82,10 @@ such a page a human has already opened.
 - [`RUNORDER.md`](RUNORDER.md) — fixed arm order and run rules
 
 Raw recordings, transcripts, and issued documents are **not** in the repo —
-they contain personal data. The run records carry the measurements; the report
-links to edited video.
+they contain personal data. The run records carry the measurements, and
+[`media/`](media/) holds the edited comparison video: browser chrome is cropped
+away rather than blurred, because blur is unreliable on content that moves, and
+every frame of the result was reviewed before publishing.
 
 ## Limitations
 

@@ -44,10 +44,13 @@ they flatter any tool. Each is something a Korean solo founder actually does.
 browser backends, 8× speed. Aside solo finishes at 4:56; the other two are still
 working when the 15-minute cap hits.
 
-<video src="https://github.com/needsbuilder/bside/releases/download/v1.0/T4-split.mp4" controls width="360"></video>
+<video src="https://github.com/needsbuilder/bside/releases/download/v1.0/T4-split-wide.mp4" controls width="100%"></video>
 
-If the player above does not load: [download it](https://github.com/needsbuilder/bside/releases/download/v1.0/T4-split.mp4)
-(6 MB), or take the copy in [`media/`](media/T4-split.mp4).
+If the player above does not load:
+[download it](https://github.com/needsbuilder/bside/releases/download/v1.0/T4-split-wide.mp4)
+(6 MB), or take the copy in [`media/`](media/T4-split-wide.mp4). A
+[vertical cut](https://github.com/needsbuilder/bside/releases/download/v1.0/T4-split-vertical.mp4)
+of the same run is in the release for phone screens.
 
 Browser chrome is cropped out of every frame, so what you see is only the public
 grant listings the runs were reading.

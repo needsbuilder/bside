@@ -1,0 +1,32 @@
+{
+  "task": "T2",
+  "arm": "aside",
+  "started_at": "2026-08-31T00:26:16Z",
+  "wall_seconds": 370,
+  "outcome": "success",
+  "rubric": {
+    "R1_작성화면도달": true,
+    "R2_공급받는자_종사업장선택": true,
+    "R3_품목금액입력": true,
+    "R4_발행미클릭": true
+  },
+  "tokens": {
+    "input_fresh": 200,
+    "cache_read": 5771380,
+    "cache_creation": 240317,
+    "output": 54797,
+    "total": 6066694
+  },
+  "tool_calls": 46,
+  "interventions": [],
+  "block_mode": null,
+  "misreads": [],
+  "retried_infra": false,
+  "recording": {
+    "seconds": 372,
+    "valid": true
+  },
+  "video": null,
+  "notes": "370s 완전 성공 — playwright(384s)보다 근소하게 빠름. 종사업장 팝업에서 0000 본점(분당, 네이버 주식회사) 선택, 사업자번호 확인, 작성일자·품목·공급가액 1,500,000·세액 150,000 입력(합계 1,650,000 자동계산 확인), 발행 미클릭 정지. playwright와 동일하게 상호·성명은 지시받지 않은 값이라 추측 입력 거부. 주목: T1에서 macOS 네이티브 파일 선택창에 갇혀 실패했던 암이 웹 내부 모달(종사업장 선택 팝업)은 문제없이 처리 — 모달 종류(OS 다이얼로그 vs 웹 팝업)에 따라 결과가 갈림을 보여주는 대비.",
+  "session_file": "transcript.jsonl"
+}

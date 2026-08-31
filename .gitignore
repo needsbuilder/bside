@@ -4,3 +4,4 @@ runs/**/raw/
 *.pdf
 .DS_Store
 .env.local
+.playwright-cli/

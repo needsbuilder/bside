@@ -3,115 +3,92 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Black+Han+Sans&family=Space+Mono:wght@400;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bone:#EFE7D6; --ink:#1C1A17; --ox:#7B1E28;
-    --riso:#2C4BA0; --flag:#F5426C; --mute:#8C8577; --dim:#B4ADA0;
-  }
+  :root{ --bone:#EFE7D6; --ink:#1C1A17; --ox:#7B1E28; --riso:#2C4BA0; --mute:#8C8577; --ghost:#D6CDBC; }
   *{margin:0;padding:0;box-sizing:border-box}
   body{
     width:1080px;height:1350px;background:var(--bone);color:var(--ink);
     font-family:'Noto Sans KR',system-ui,sans-serif;
-    display:flex;flex-direction:column;padding:80px 64px 72px;
+    display:flex;flex-direction:column;padding:84px 72px 68px;
     position:relative;overflow:hidden;
   }
   body::after{
-    content:'';position:absolute;inset:0;pointer-events:none;opacity:.28;mix-blend-mode:multiply;
+    content:'';position:absolute;inset:0;pointer-events:none;opacity:.26;mix-blend-mode:multiply;
     background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3'/></filter><rect width='180' height='180' filter='url(%23n)' opacity='.5'/></svg>");
   }
 
-  .mark{position:relative;line-height:.78;height:150px}
-  .mark span{position:absolute;top:0;left:0;font-family:'Anton',sans-serif;font-size:164px;letter-spacing:-.028em}
-  .mark .plate-blue{color:var(--riso);transform:translate(7px,6px);mix-blend-mode:multiply;opacity:.92}
-  .mark .plate-ox{color:var(--ox)}
+  /* wordmark */
+  .mark{position:relative;line-height:.78;height:118px}
+  .mark span{position:absolute;top:0;left:0;font-family:'Anton',sans-serif;font-size:128px;letter-spacing:-.028em}
+  .mark .b{color:var(--riso);transform:translate(6px,5px);mix-blend-mode:multiply;opacity:.92}
+  .mark .o{color:var(--ox)}
+  .kicker{margin-top:10px;font-family:'Space Mono',monospace;font-weight:700;font-size:19px;letter-spacing:.3em;color:var(--riso)}
 
-  .kicker{margin-top:14px;font-family:'Space Mono',monospace;font-weight:700;font-size:22px;letter-spacing:.32em;color:var(--riso)}
-  .sub{margin-top:26px;font-family:'Black Han Sans',sans-serif;font-size:46px;letter-spacing:-.02em;line-height:1.28}
-  .sub em{font-style:normal;color:var(--ox)}
+  /* headline */
+  .head{margin-top:52px;font-family:'Black Han Sans',sans-serif;font-size:60px;line-height:1.24;letter-spacing:-.025em}
+  .head em{font-style:normal;color:var(--ox)}
 
-  table{width:100%;border-collapse:collapse;margin-top:44px;table-layout:fixed;flex:1}
-  thead th{padding-bottom:14px;font-family:'Space Mono',monospace;font-weight:700;font-size:17px;letter-spacing:.1em;color:var(--mute);vertical-align:bottom}
-  .h-track{text-align:left}
-  .h-arm{text-align:center;color:var(--ink);line-height:1.3}
-  .h-arm em{display:block;font-style:normal;font-size:13px;color:var(--mute);letter-spacing:.08em;margin-top:3px}
+  /* rows */
+  .rows{margin-top:auto;margin-bottom:auto;display:flex;flex-direction:column;gap:58px}
+  .row{display:flex;align-items:center;gap:34px}
+  .who{width:250px}
+  .who .n{font-family:'Black Han Sans',sans-serif;font-size:38px;letter-spacing:-.02em;line-height:1.15}
+  .who .t{margin-top:6px;font-family:'Space Mono',monospace;font-size:15px;letter-spacing:.1em;color:var(--mute)}
+  .dots{display:flex;gap:20px;flex:1}
+  .d{width:62px;height:62px;border-radius:50%}
+  .d.win{background:var(--ox)}
+  .d.win.hero{background:var(--ox);box-shadow:0 0 0 9px rgba(123,30,40,.13)}
+  .d.lose{border:4px solid var(--ghost)}
+  .rec{width:172px;text-align:right;font-family:'Anton',sans-serif;font-size:46px;letter-spacing:.01em;color:var(--mute)}
+  .rec.hero{color:var(--ox)}
 
-  tbody tr{border-top:2px solid var(--riso)}
-  tbody tr:last-child{border-bottom:2px solid var(--riso)}
-  tbody td{vertical-align:middle;padding:19px 0}
-  .no{font-family:'Space Mono',monospace;font-weight:700;font-size:22px;color:var(--ox)}
-  .name{font-size:30px;font-weight:500;letter-spacing:-.03em;white-space:nowrap}
-  .cell{text-align:center;font-family:'Space Mono',monospace;font-weight:700;font-size:26px;color:var(--dim)}
-  .cell.ok{color:var(--ink)}
-  .cell.best{color:var(--ox);font-size:29px}
-  .cell small{display:block;font-family:'Noto Sans KR',sans-serif;font-weight:500;font-size:14px;letter-spacing:0;margin-top:2px;color:var(--mute)}
-
-  .score{display:flex;align-items:baseline;gap:0;margin-top:8px;padding-top:22px}
-  .score .lbl{font-family:'Space Mono',monospace;font-size:17px;letter-spacing:.1em;color:var(--mute);flex:1}
-  .score .v{width:150px;text-align:center;font-family:'Anton',sans-serif;font-size:40px;letter-spacing:.02em;color:var(--ink)}
-  .score .v.win{color:var(--ox)}
-  .foot{margin-top:26px;font-family:'Space Mono',monospace;font-size:16px;letter-spacing:.06em;color:var(--mute);line-height:1.7}
+  /* legend + footer */
+  .legend{display:flex;gap:26px;align-items:center;font-family:'Space Mono',monospace;font-size:16px;letter-spacing:.06em;color:var(--mute);padding-top:8px}
+  .legend i{display:inline-block;width:17px;height:17px;border-radius:50%;vertical-align:-3px;margin-right:8px}
+  .legend .f{background:var(--ox)}
+  .legend .e{border:3px solid var(--ghost)}
+  .foot{margin-top:30px;padding-top:26px;border-top:2px solid var(--riso);
+        font-family:'Space Mono',monospace;font-size:17px;letter-spacing:.05em;color:var(--mute);line-height:1.8}
+  .foot b{color:var(--ink);font-weight:700}
 </style>
 
-<div class="mark">
-  <span class="plate-blue">Bside</span>
-  <span class="plate-ox">Bside</span>
-</div>
+<div class="mark"><span class="b">Bside</span><span class="o">Bside</span></div>
 <div class="kicker">BENCHMARKS FOR ASIDE</div>
-<div class="sub">같은 Aside인데<br><em>쓰는 방법에 따라 정반대였다</em></div>
 
-<table>
-  <colgroup>
-    <col style="width:52px"><col><col style="width:150px"><col style="width:150px"><col style="width:158px">
-  </colgroup>
-  <thead>
-    <tr>
-      <th class="h-track" colspan="2">TASK</th>
-      <th class="h-arm">PLAYWRIGHT<em>CLI</em></th>
-      <th class="h-arm">ASIDE<em>CLI</em></th>
-      <th class="h-arm">ASIDE<em>단독</em></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td class="no">01</td><td class="name">네이버 블로그 글 발행</td>
-      <td class="cell ok">661s</td>
-      <td class="cell">실패<small>파일창에 갇힘</small></td>
-      <td class="cell best">475s</td>
-    </tr>
-    <tr>
-      <td class="no">02</td><td class="name">홈택스 세금계산서 작성</td>
-      <td class="cell ok">384s</td>
-      <td class="cell ok">370s</td>
-      <td class="cell best">176s</td>
-    </tr>
-    <tr>
-      <td class="no">03</td><td class="name">네이버 지도 점심 찾기</td>
-      <td class="cell ok">760s</td>
-      <td class="cell">실패<small>시간 초과</small></td>
-      <td class="cell best">734s</td>
-    </tr>
-    <tr>
-      <td class="no">04</td><td class="name">정부지원사업 매칭</td>
-      <td class="cell">실패<small>첨부 파싱</small></td>
-      <td class="cell">실패<small>첨부 파싱</small></td>
-      <td class="cell best">296s</td>
-    </tr>
-    <tr>
-      <td class="no">05</td><td class="name">부동산 매물 크로스체크</td>
-      <td class="cell">실패<small>시간 초과</small></td>
-      <td class="cell">실패<small>시간 초과</small></td>
-      <td class="cell best">869s</td>
-    </tr>
-  </tbody>
-</table>
+<div class="head">같은 Aside인데<br><em>쓰는 방법에 따라 정반대였다</em></div>
 
-<div class="score">
-  <div class="lbl">전적</div>
-  <div class="v">3승 2패</div>
-  <div class="v">1승 4패</div>
-  <div class="v win">5승 0패</div>
+<div class="rows">
+  <div class="row">
+    <div class="who"><div class="n">Aside 단독</div><div class="t">OWN AGENT</div></div>
+    <div class="dots">
+      <div class="d win hero"></div><div class="d win hero"></div><div class="d win hero"></div><div class="d win hero"></div><div class="d win hero"></div>
+    </div>
+    <div class="rec hero">5승 0패</div>
+  </div>
+
+  <div class="row">
+    <div class="who"><div class="n">Playwright</div><div class="t">CLI + CHROME</div></div>
+    <div class="dots">
+      <div class="d win"></div><div class="d win"></div><div class="d win"></div><div class="d lose"></div><div class="d lose"></div>
+    </div>
+    <div class="rec">3승 2패</div>
+  </div>
+
+  <div class="row">
+    <div class="who"><div class="n">Aside CLI</div><div class="t">CLI + CLAUDE CODE</div></div>
+    <div class="dots">
+      <div class="d lose"></div><div class="d win"></div><div class="d lose"></div><div class="d lose"></div><div class="d lose"></div>
+    </div>
+    <div class="rec">1승 4패</div>
+  </div>
+</div>
+
+<div class="legend">
+  <span><i class="f"></i>성공</span>
+  <span><i class="e"></i>실패 · 시간 초과</span>
+  <span>과제 5개 × 3가지 방법 = 15회</span>
 </div>
 
 <div class="foot">
-  하네스 Claude Code + Opus 5 고정 · 과제당 15분 제한 · 사람 개입 15회 전부 0<br>
-  총 토큰 4,762만 / 3,050만 / <span style="color:#7B1E28;font-weight:700">1,573만</span>
+  하네스는 <b>Claude Code + Opus 5</b>로 고정, 브라우저만 교체 · 과제당 15분 · 사람 개입 0회<br>
+  총 토큰 &nbsp;Aside 단독 <b>1,573만</b> &nbsp;/&nbsp; Aside CLI 3,050만 &nbsp;/&nbsp; Playwright 4,762만
 </div>

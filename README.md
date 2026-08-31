@@ -40,11 +40,17 @@ they flatter any tool. Each is something a Korean solo founder actually does.
 
 ### Watch one
 
-[**T4, all three arms side by side**](media/T4-split.mp4) (8× speed, 118s) —
-same task, same model, same prompt, three browser backends. Aside solo finishes
-at 4:56; the other two are still working when the 15-minute cap hits. Browser
-chrome is cropped out of every frame, so what you see is only the public grant
-listings the runs were reading.
+**T4, all three arms side by side** — same task, same model, same prompt, three
+browser backends, 8× speed. Aside solo finishes at 4:56; the other two are still
+working when the 15-minute cap hits.
+
+<video src="https://github.com/needsbuilder/bside/releases/download/v1.0/T4-split.mp4" controls width="360"></video>
+
+If the player above does not load: [download it](https://github.com/needsbuilder/bside/releases/download/v1.0/T4-split.mp4)
+(6 MB), or take the copy in [`media/`](media/T4-split.mp4).
+
+Browser chrome is cropped out of every frame, so what you see is only the public
+grant listings the runs were reading.
 
 Definitions and rubrics are in [`tasks/`](tasks/), **committed before any run** —
 the git history is the proof. Where we later found a flaw in our own task design

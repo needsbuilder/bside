@@ -30,9 +30,9 @@
   /* rows */
   .rows{margin-top:auto;margin-bottom:auto;display:flex;flex-direction:column;gap:58px}
   .row{display:flex;align-items:center;gap:34px}
-  .who{width:250px}
+  .who{width:288px}
   .who .n{font-family:'Black Han Sans',sans-serif;font-size:38px;letter-spacing:-.02em;line-height:1.15}
-  .who .t{margin-top:6px;font-family:'Space Mono',monospace;font-size:15px;letter-spacing:.1em;color:var(--mute)}
+  .who .t{margin-top:6px;font-family:'Space Mono',monospace;font-size:14px;letter-spacing:.1em;color:var(--mute)}
   .dots{display:flex;gap:20px;flex:1}
   .d{width:62px;height:62px;border-radius:50%}
   .d.win{background:var(--ox)}
@@ -58,7 +58,7 @@
 
 <div class="rows">
   <div class="row">
-    <div class="who"><div class="n">Aside 단독</div><div class="t">OWN AGENT</div></div>
+    <div class="who"><div class="n">Aside 단독</div><div class="t">자체 에이전트</div></div>
     <div class="dots">
       <div class="d win hero"></div><div class="d win hero"></div><div class="d win hero"></div><div class="d win hero"></div><div class="d win hero"></div>
     </div>
@@ -66,19 +66,19 @@
   </div>
 
   <div class="row">
-    <div class="who"><div class="n">Playwright</div><div class="t">CLI + CHROME</div></div>
-    <div class="dots">
-      <div class="d win"></div><div class="d win"></div><div class="d win"></div><div class="d lose"></div><div class="d lose"></div>
-    </div>
-    <div class="rec">3승 2패</div>
-  </div>
-
-  <div class="row">
-    <div class="who"><div class="n">Aside CLI</div><div class="t">CLI + CLAUDE CODE</div></div>
+    <div class="who"><div class="n">Aside CLI</div><div class="t">CLAUDE CODE → ASIDE</div></div>
     <div class="dots">
       <div class="d lose"></div><div class="d win"></div><div class="d lose"></div><div class="d lose"></div><div class="d lose"></div>
     </div>
     <div class="rec">1승 4패</div>
+  </div>
+
+  <div class="row">
+    <div class="who"><div class="n">Playwright</div><div class="t">CLAUDE CODE → PLAYWRIGHT</div></div>
+    <div class="dots">
+      <div class="d win"></div><div class="d win"></div><div class="d win"></div><div class="d lose"></div><div class="d lose"></div>
+    </div>
+    <div class="rec">3승 2패</div>
   </div>
 </div>
 
